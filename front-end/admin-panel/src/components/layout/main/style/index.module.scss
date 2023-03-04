@@ -1,0 +1,8 @@
+@use "../../../../index.scss";
+
+.main {
+    @extend %displayDirectionRow;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+}

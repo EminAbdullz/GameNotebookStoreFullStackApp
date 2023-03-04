@@ -1,0 +1,12 @@
+@use "../../../index.scss";
+
+.paragraf {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: index.$darkBlue;
+    cursor: pointer;
+    transition: index.$transition;
+    &:hover {
+        color: index.$orange;
+    }
+}

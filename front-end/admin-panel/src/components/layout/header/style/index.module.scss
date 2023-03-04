@@ -1,0 +1,32 @@
+@use "../../../../index.scss";
+
+.navbar {
+    @extend %displayDirectionRow;
+    width: 100%;
+    background-color: index.$darkBlue;
+    height: 3rem;
+    .icon {
+        @extend %displayDirectionRow;
+        border : 2px solid red;
+        background-color: index.$whiteSmoke;
+        border-radius: index.$borderRadius;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+        color: index.$darkBlue;
+        cursor: pointer;
+        transition: index.$transition;
+        border: 1px solid index.$darkBlue;
+        &:hover {
+            background-color: index.$darkBlue;
+            border: 1px solid index.$whiteSmoke;
+            color: index.$whiteSmoke;
+        }
+    }
+    & .icon:first-child{
+        margin-left: 20px;
+    }
+    & .icon:last-child{
+        margin-right: 20px;
+    }
+}

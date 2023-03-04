@@ -1,0 +1,92 @@
+@use "../../../index.scss";
+
+.productCardHome {
+    width: 30%;
+    color: index.$black;
+    border-radius: index.$borderRadius;
+    background-color: index.$blue;
+    padding: 10px;
+    p {
+        font-weight: 600;
+        transition: index.$transition;
+        font-size: 1rem;
+        cursor: pointer;
+        &:hover {
+            color: index.$orange;
+        }
+    }
+    img {
+        width: 100%;
+    }
+    .buttons {
+        @extend %displayDirectionRow;
+        justify-content: space-between;
+        padding-top: 1.5rem;
+        & button:first-child {
+            @extend %displayDirectionRow;
+            justify-content: space-around;
+            border-radius: index.$borderRadius;
+            background-color: index.$green;
+            .icon {
+                color: index.$green;
+            }
+            &:hover {
+                background-color: index.$whiteSmoke;
+                border: 1px solid index.$green;
+                a {
+                    color: index.$green;
+                }
+                .icon {
+                    color: index.$whiteSmoke;
+                    background-color: index.$green;
+                }
+            }
+        }
+        & button:last-child {
+            @extend %displayDirectionRow;
+            justify-content: space-around;
+            background-color: index.$maroon;
+            .icon {
+                color: index.$maroon;
+            }
+            &:hover {
+                background-color: index.$whiteSmoke;
+                border: 1px solid index.$maroon;
+                a {
+                    color: index.$maroon;
+                }
+                .icon {
+                    color: index.$whiteSmoke;
+                    background-color: index.$maroon;
+                }
+            }
+        }
+        .icon {
+            @extend %displayDirectionRow;
+            transition: index.$transition;
+            background-color: index.$whiteSmoke;
+            height: 25px;
+            width: 25px;
+            border-radius: index.$borderRadius;
+        }
+    }
+}
+
+.productCardCreate {
+    width: 50%;
+    img {
+        width: 100%;
+    }
+}
+
+.productCardUpdate {
+    width: 50%;
+    img {
+        width: 100%;
+    }
+    .buttons {
+        & button:first-child {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@use "../../../index.scss";
+
+.menu {
+    background-color: index.$darkBlue;
+    color: index.$whiteSmoke;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: index.$borderRadius;
+    width: 250px;
+    cursor: pointer;
+    option {
+        transition: index.$transition;
+        &:hover {
+            color: index.$orange;
+        }
+    }
+}

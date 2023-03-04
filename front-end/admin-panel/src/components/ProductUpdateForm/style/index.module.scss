@@ -1,0 +1,48 @@
+@use "../../../index.scss";
+
+.updateForm {
+    @extend %displayDirectionColumn;
+    gap: 10px;
+    width: 250px;
+    .typeText {
+        width: 91%;
+        padding: 10px;
+        border-radius: index.$borderRadius;
+        background-color: index.$darkBlue;
+        color: index.$whiteSmoke;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+    }
+    ::placeholder {
+        color: index.$whiteSmoke;
+        font-size: 0.9rem;
+        font-weight: 100;
+    }
+    .forCheckbox {
+        @extend %displayDirectionRow;
+        justify-content: space-between;
+        width: 91%;
+        padding: 8px;
+        border: 2px solid index.$darkBlue;
+        border-radius: index.$borderRadius;
+        cursor: pointer;
+        transition: index.$transition;
+        label {
+            transition: index.$transition;
+            color: index.$darkBlue;
+            width: 100%;
+            height: 100%;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        &:hover {
+            background-color: index.$darkBlue;
+            label {
+                color: index.$whiteSmoke;
+            }
+        }
+    }
+}

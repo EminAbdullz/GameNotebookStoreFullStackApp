@@ -1,0 +1,22 @@
+@use "../../../index.scss";
+
+.delete {
+    @extend %displayDirectionColumn;
+    position: relative;
+    align-items: center;
+    padding-top: 5rem;
+    margin: 0 auto;
+    width: 90%;
+    .forMain {
+        @extend %displayDirectionRow;
+        width: 100%;
+    }
+}
+
+.blur {
+    filter: blur(7px);
+    width: 100%;
+    border :1px solid red ;
+    height: 100%;
+    position: absolute;
+}
