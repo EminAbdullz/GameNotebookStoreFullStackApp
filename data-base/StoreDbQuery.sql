@@ -13,6 +13,36 @@
 --INSERT INTO Brands VALUES (N'Razer')
 
 
+--CREATE PROC GetBrandById @Id INT
+--AS
+--BEGIN
+--SELECT * FROM Brands WHERE Brands.Id = @Id
+--END
+
+--CREATE PROC DeleteBrandById @Id INT
+--AS
+--BEGIN
+--DELETE FROM Brands WHERE Brands.Id = @Id
+--END
+
+--CREATE PROC AddBrand @Name NVARCHAR (255)
+--AS
+--BEGIN
+--INSERT INTO Brands 
+--OUTPUT inserted.Id
+--VALUES (@Name)
+--END
+
+--CREATE PROC UpdateBrand @Id INT, @Name NVARCHAR(255)
+--AS
+--BEGIN
+--UPDATE Brands SET Brands.Name = @Name 
+--OUTPUT inserted.Id
+--WHERE Brands.Id = @Id
+--END
+
+
+
 --///////////////////////////////////////////
 
 --CREATE TABLE Countries (
@@ -114,6 +144,7 @@
 --AS
 --BEGIN
 --UPDATE Products SET Products.Title = @Title, Products.Price = @Price, Products.Description = @Description, Products.ImageUrl = @ImageUrl, Products.BestSeller = @BestSeller, Products.[Premium] = @Premium, Products.Available = @Available, Products.BrandId = @BrandId, Products.CountryId = @CountryId, Products.RamId = @RamId
+--OUTPUT inserted.Id
 --WHERE Products.Id = @Id
 --END
 

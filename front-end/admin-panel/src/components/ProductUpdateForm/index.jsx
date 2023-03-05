@@ -5,7 +5,7 @@ import { productPropertiesAction } from "../../store/productPropertiesSlice";
 import Update from "../Buttons/Update";
 import styles from "./style/index.module.scss";
 ///////////////////
-function ProductUpdateForm({ async = Function.prototype, text }) {
+function ProductUpdateForm({ async = Function.prototype }) {
   const { brandId, countryId, ramId, isBestseller, isPremium, isAvailable } =
     useSelector((state) => state.productProperties);
   const { productId = "" } = useSelector((state) => state.productProperties);

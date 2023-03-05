@@ -68,8 +68,8 @@ namespace StoreBackEnd.Controllers
         {
             try
             {
-                await _repository.UpdateProduct(product);
-                return Ok("Updated");
+                var result = await _repository.UpdateProduct(product);
+                return Ok(result);
             }
             catch (Exception)
             {

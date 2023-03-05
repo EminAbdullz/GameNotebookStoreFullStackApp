@@ -11,7 +11,7 @@ namespace StoreBackEnd.Repository
         Task<List<Product>> GetProductsByTitle(string title);
 
         Task DeleteProductsAsync(int id);
-        Task UpdateProduct(UpdateProductModel product);
+        Task <Product> UpdateProduct(UpdateProductModel product);
 
 
     }

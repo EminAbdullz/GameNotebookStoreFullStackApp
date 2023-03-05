@@ -29,7 +29,12 @@ function App() {
           />
           <Route
             path="/update"
-            element={<ProductProperties async={postUpdatedProduct} />}
+            element={
+              <ProductProperties
+                async={postUpdatedProduct}
+                product={createdProduct}
+              />
+            }
           />
           <Route path="/delete" element={<DeleteProduct />} />
         </Routes>

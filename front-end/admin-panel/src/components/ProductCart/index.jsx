@@ -66,7 +66,7 @@ function ProductCard(props) {
         <p>Best Seller - {bestSeller.toString()}</p>
         <p>Aviable - {available.toString()}</p>
         <p>Primium: - {premium.toString()}</p>
-        <p>When added: - {moment(stockDate).format("DD/MM/YYYY")}</p>
+        <p>Creating Date: - {moment(stockDate).format("DD/MM/YYYY")}</p>
         <p>Price - {price}$</p>
         <div className={styles.buttons}>
           <LinkButton id={id}>

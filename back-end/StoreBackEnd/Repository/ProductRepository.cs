@@ -68,13 +68,14 @@ namespace StoreBackEnd.Repository
             }
         }
 
-        public async Task UpdateProduct(UpdateProductModel product)
+        public async Task<Product> UpdateProduct(UpdateProductModel product)
         {
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string query = @"exec UpdateProduct @Id,  @Title, @Price, @Description, @ImageUrl, @BestSeller , @Premium , @Available ,  @BrandId , @CountryId , @RamId ";
-                await db.ExecuteAsync(query, product);
+                var updatedId = await db.QueryFirstAsync<int>(query, product);
+                return await GetProductByIdAsync((int)updatedId);
             }
 
         }

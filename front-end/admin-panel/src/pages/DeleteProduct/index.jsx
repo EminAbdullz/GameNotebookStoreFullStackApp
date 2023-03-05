@@ -7,7 +7,7 @@ import styles from "./style/index.module.scss";
 function DeleteProduct() {
   const { products = [] } = useSelector((state) => state.products);
   const { productId = "" } = useSelector((state) => state.productProperties);
-  ///////
+  ///////////
   const getProductById = (id = "") => {
     if (productId === "") return;
     return [products.find((item) => item.id === id)];
