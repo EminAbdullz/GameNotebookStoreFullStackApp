@@ -11,7 +11,7 @@ const initialState = {
 export const postProduct = createAsyncThunk(
   "create-product/postProduct",
   async (payload) => {
-    const response = await createProductRequest(PRODUCTS_URL, payload);
+    const response = await createProductRequest(PRODUCTS_URL, payload)
     return response;
   }
 );

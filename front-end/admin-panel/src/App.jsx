@@ -6,12 +6,9 @@ import Home from "./pages/Home";
 import DeleteProduct from "./pages/DeleteProduct";
 import Authentication from "./components/Authentication";
 import ProductProperties from "./pages/ProductProperties";
-import { postProduct } from "./store/createProductSlice";
-import { postUpdatedProduct } from "./store/updateProductSlice";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
-  const { createdProduct } = useSelector((state) => state.createProduct);
   ////////////////
   const { isAdmin = null } = user;
   ////////////////
@@ -21,21 +18,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/create"
-            element={
-              <ProductProperties async={postProduct} product={createdProduct} />
-            }
-          />
-          <Route
-            path="/update"
-            element={
-              <ProductProperties
-                async={postUpdatedProduct}
-                product={createdProduct}
-              />
-            }
-          />
+          <Route path="/create" element={<ProductProperties />} />
+          <Route path="/update" element={<ProductProperties />} />
           <Route path="/delete" element={<DeleteProduct />} />
         </Routes>
         <Footer />

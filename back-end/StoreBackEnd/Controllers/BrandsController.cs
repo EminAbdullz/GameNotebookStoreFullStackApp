@@ -35,23 +35,23 @@ namespace StoreBackEnd.Controllers
             try
             {
 
-            await _repos.DeleteBrandByIdAsync(id);
-            return Ok($"Deleted at id {id}");
+                await _repos.DeleteBrandByIdAsync(id);
+                return Ok($"Deleted at id {id}");
             }
             catch (Exception ex)
             {
 
-return  BadRequest(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBrand([FromForm] AddBrandModel brand) 
+        public async Task<IActionResult> AddBrand([FromForm] AddBrandModel brand)
         {
             try
             {
                 var result = await _repos.InsertBrand(brand);
-                return Ok(result); 
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ return  BadRequest(ex.Message);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateBrand([FromForm] Brand brand) 
+        public async Task<IActionResult> UpdateBrand([FromForm] Brand brand)
         {
             try
             {

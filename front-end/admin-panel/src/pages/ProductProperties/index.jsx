@@ -13,9 +13,9 @@ import {
 import Loader from "../../components/Loader";
 import styles from "./style/index.module.scss";
 import TextByLocation from "../../components/TextByLocation";
-import { useLocation } from "react-router-dom";
+import useGetProductByLocation from "../../hooks/useGetProductByLocation";
 ////
-function ProductProperties({ async, product = [] }) {
+function ProductProperties() {
   /////////
   useApi(getBrands());
   useApi(getCountries());
@@ -24,10 +24,10 @@ function ProductProperties({ async, product = [] }) {
   const { brands, countries, rams, loading } = useSelector(
     (state) => state.productProperties
   );
+  const { createdProduct } = useSelector((state) => state.createProduct);
   ////////
   const dispatch = useDispatch();
   ////////
-  const location = useLocation();
   ///////
   const { getBrandId, getCountryId, getRamId } = productPropertiesAction;
   ///////
@@ -35,16 +35,8 @@ function ProductProperties({ async, product = [] }) {
   const onHandleGetCountryId = (id) => dispatch(getCountryId(id));
   const onHandleGetRamId = (id) => dispatch(getRamId(id));
   //////
-  const { products = [] } = useSelector((state) => state.products);
-  const { productId = "" } = useSelector((state) => state.productProperties);
   ///////
-  const productByLocation = () => {
-    if (location.pathname === "/create") return product;
-    if (location.pathname === "/update") {
-      if (productId === "") return;
-      return [products.find((item) => item.id === productId)];
-    }
-  };
+  const { productByLocation } = useGetProductByLocation();
   //////
   return (
     <div className={styles.property}>
@@ -66,7 +58,7 @@ function ProductProperties({ async, product = [] }) {
               />
               <DropMenu data={rams} text={"Rams"} getValue={onHandleGetRamId} />
             </div>
-            <ProductUpdateForm async={async} />
+            <ProductUpdateForm />
           </section>
         </>
       )}

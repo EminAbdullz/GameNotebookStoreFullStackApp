@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import useRemoveAlert from "../../../notifications/RemovingAlert/useRemovingAlert";
+import useAlertAfterRemoving from "../../../notifications/useRemoveAlert";
 import { productPropertiesAction } from "../../../store/productPropertiesSlice";
 import styles from "./style/index.module.scss";
 
@@ -9,23 +9,22 @@ function LinkButton({ id, children }) {
   //////
   const location = useLocation();
   ///////////
-  const { productId } = useSelector((state) => state.productProperties);
   ///////
   const { getProductId } = productPropertiesAction;
   //////////
-  const { removeAlert } = useRemoveAlert();
+  const { alertAfterRemoving } = useAlertAfterRemoving();
   ////////////
-  const onHandleClick = () => {
+  const onHandleClick = (e) => {
     if (location.pathname === "/" || location.pathname === "/create") {
       dispatch(getProductId(id));
     }
-    if (location.pathname === "/delete") {
-      removeAlert();
+    if (location.pathname === "/delete" && e.target.innerText === "Delete") {
+      alertAfterRemoving();
     }
   };
   ///////////
   return (
-    <button onClick={onHandleClick} className={styles.linkButton}>
+    <button onClick={(e) => onHandleClick(e)} className={styles.linkButton}>
       {children}
     </button>
   );

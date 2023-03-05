@@ -26,7 +26,6 @@ namespace StoreBackEnd.Repository
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                //The stored procedure that selects one pizza by Id
                 string query = @"exec GetBrandById @Id";
                 var result = await (db.QueryFirstOrDefaultAsync<Brand>(query, new { id }));
                 return result;

@@ -27,6 +27,7 @@ function ProductCard(props) {
     return (
       <div className={styles.productCardHome}>
         <img src={imageUrl} alt="Notebook" />
+        <p>ID : {id}</p>
         <p>Title - {title}</p>
         <p>Brand - {brand}</p>
         <p>Desription - {description}</p>
@@ -58,6 +59,7 @@ function ProductCard(props) {
     return (
       <div className={`${styles.productCardHome} ${styles.productCardCreate}`}>
         <img src={imageUrl} alt="Notebook" />
+        <p>ID : {id}</p>
         <p>Title - {title}</p>
         <p>Brand - {brand}</p>
         <p>Desription - {description}</p>
@@ -89,6 +91,7 @@ function ProductCard(props) {
     return (
       <div className={`${styles.productCardHome} ${styles.productCardUpdate}`}>
         <img src={imageUrl} alt="Notebook" />
+        <p>ID : {id}</p>
         <p>Title - {title}</p>
         <p>Brand - {brand}</p>
         <p>Desription - {description}</p>

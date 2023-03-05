@@ -55,6 +55,37 @@
 --INSERT INTO Countries VALUES (N'Ireland')
 
 
+--CREATE PROC GetCountryById @Id INT
+--AS
+--BEGIN
+--SELECT * FROM Countries WHERE Countries.Id = @Id
+--END
+
+--CREATE PROC AddCountry @Name NVARCHAR (255)
+--AS
+--BEGIN
+--INSERT INTO Countries 
+--OUTPUT inserted.Id
+--VALUES (@Name)
+--END
+
+
+
+--CREATE PROC UpdateCountry @Id INT, @Name NVARCHAR(255)
+--AS
+--BEGIN
+--UPDATE Countries SET Countries.Name = @Name 
+--OUTPUT inserted.Id
+--WHERE Countries.Id = @Id
+--END
+
+--CREATE PROC DeleteCountryById @Id INT
+--AS
+--BEGIN
+--DELETE FROM Countries WHERE Countries.Id = @Id
+--END
+
+
 --//////////////////////////////////////////
 
 --CREATE TABLE Rams (

@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createProductAction } from "../../store/createProductSlice";
+import useUpdateProducts from "../../hooks/useUpdateProducts";
 import { productPropertiesAction } from "../../store/productPropertiesSlice";
 import Update from "../Buttons/Update";
 import styles from "./style/index.module.scss";
 ///////////////////
-function ProductUpdateForm({ async = Function.prototype }) {
+function ProductUpdateForm() {
   const { brandId, countryId, ramId, isBestseller, isPremium, isAvailable } =
     useSelector((state) => state.productProperties);
   const { productId = "" } = useSelector((state) => state.productProperties);
@@ -14,7 +14,8 @@ function ProductUpdateForm({ async = Function.prototype }) {
   const navigate = useNavigate();
   /////
   const { setBestseller, setPremium, setAvailable } = productPropertiesAction;
-  const { resetCreatedProduct } = createProductAction;
+  /////
+  const { asyncUpdateProducts } = useUpdateProducts();
   /////
   const formData = new FormData();
   const createProduct = (e) => {
@@ -31,9 +32,8 @@ function ProductUpdateForm({ async = Function.prototype }) {
     formData.append("CountryId", countryId);
     formData.append("RamId", ramId);
     //////
-    dispatch(async(formData));
-    setTimeout(() => navigate("/"), 3000);
-    dispatch(resetCreatedProduct());
+    navigate("/");
+    asyncUpdateProducts(formData);
   };
   /////
   return (
