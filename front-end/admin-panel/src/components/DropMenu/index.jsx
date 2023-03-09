@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import styles from "./style/index.module.scss";
 
-function DropMenu({ data = [], text, getValue = Function.prototype }) {
+function DropMenu({ data = [], text, getId = Function.prototype }) {
   /////////////////
   const selectOptions = useMemo(() => {
     return data.map((item) => (
@@ -9,11 +9,13 @@ function DropMenu({ data = [], text, getValue = Function.prototype }) {
         {item.name || item.property}
       </option>
     ));
-  });
+  }, [data]);
   /////////////////
   return (
-    <select onChange={(e) => getValue(e.target.value)} className={styles.menu} >
-      <option>{text}</option>
+    <select onChange={(e) => getId(e.target.value)} className={styles.menu}>
+      <option disabled selected>
+        {text}
+      </option>
       {selectOptions}
     </select>
   );

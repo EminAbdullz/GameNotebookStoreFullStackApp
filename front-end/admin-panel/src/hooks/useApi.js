@@ -5,5 +5,5 @@ export const useApi = (action) => {
   const dispatch = useDispatch();
   return useEffect(() => {
     dispatch(action);
-  }, [dispatch]);
+  }, []);
 };

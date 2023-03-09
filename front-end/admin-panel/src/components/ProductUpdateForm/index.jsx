@@ -1,23 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import useUpdateProducts from "../../hooks/useUpdateProducts";
-import { productPropertiesAction } from "../../store/productPropertiesSlice";
-import Update from "../Buttons/Update";
+import { toast } from "react-toastify";
+import useUpdateDataBase from "../../hooks/useUpdateDataBase";
+import { UpdateIcon } from "../../icons/update";
+import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
+import LinkButton from "../Button";
 import styles from "./style/index.module.scss";
+
 ///////////////////
 function ProductUpdateForm() {
-  const { brandId, countryId, ramId, isBestseller, isPremium, isAvailable } =
-    useSelector((state) => state.productProperties);
+  const { isBestseller, isPremium, isAvailable } = useSelector(
+    (state) => state.productProperties
+  );
+  const { brandId = "" } = useSelector((state) => state.brandProperties);
+  const { countryId = "" } = useSelector((state) => state.countriesProperties);
+  const { ramId = "" } = useSelector((state) => state.ramsProperties);
   const { productId = "" } = useSelector((state) => state.productProperties);
-  ///////
+  ///////////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  /////
+
   const { setBestseller, setPremium, setAvailable } = productPropertiesAction;
-  /////
-  const { asyncUpdateProducts } = useUpdateProducts();
-  /////
+
+  const { asyncUpdateProducts } = useUpdateDataBase();
+
   const formData = new FormData();
+
   const createProduct = (e) => {
     e.preventDefault();
     formData.append("Id", productId);
@@ -32,9 +40,24 @@ function ProductUpdateForm() {
     formData.append("CountryId", countryId);
     formData.append("RamId", ramId);
     //////
-    navigate("/");
-    asyncUpdateProducts(formData);
+    if (
+      !formData.get("Title") ||
+      !formData.get("Price") ||
+      !formData.get("Description") ||
+      !formData.get("ImageUrl") ||
+      !formData.get("BrandId") ||
+      !formData.get("CountryId") ||
+      !formData.get("RamId")
+    ) {
+      toast.error(`Invalid values !!`, { position: "top-right" });
+    } else {
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+      asyncUpdateProducts(formData);
+    }
   };
+
   /////
   return (
     <form onSubmit={createProduct} className={styles.updateForm}>
@@ -86,7 +109,12 @@ function ProductUpdateForm() {
           onChange={() => dispatch(setAvailable())}
         />
       </div>
-      <Update />
+      <LinkButton>
+        <div className={styles.icon}>
+          <UpdateIcon />
+        </div>
+        Update
+      </LinkButton>
     </form>
   );
 }

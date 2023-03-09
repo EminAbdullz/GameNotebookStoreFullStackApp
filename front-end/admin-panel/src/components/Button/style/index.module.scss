@@ -1,0 +1,16 @@
+@use "../../../index.scss";
+
+.linkButton {
+    width: 120px;
+    height: 40px;
+    font-weight: 600;
+    transition: index.$transition;
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    a {
+        transition: index.$transition;
+        text-decoration: none;
+        color: index.$whiteSmoke;
+    }
+}

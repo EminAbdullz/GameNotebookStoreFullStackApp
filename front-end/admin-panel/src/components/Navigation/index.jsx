@@ -7,6 +7,7 @@ function Navigation() {
       <Link to={"/"}> Home </Link>
       <Link to={"/create"}> Create </Link>
       <Link to={"/update"}> Update </Link>
+      <Link to={"/options"}> Options </Link>
       <Link to={"/delete"}> Delete </Link>
     </nav>
   );

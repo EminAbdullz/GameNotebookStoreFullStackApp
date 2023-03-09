@@ -1,7 +1,16 @@
 import { useMemo } from "react";
-import ProductCard from "../components/ProductCart";
+import ProductCart from "../components/ProductCart";
+import useGetProductByLocation from "./useGetProductByLocation";
 
-export const useScreenProducts = (products = []) =>
-  useMemo(() => {
-    return products.map((item) => <ProductCard {...item} key={item.id} />);
-  },[products]);
+function useScreenProducts() {
+  ///////////////////
+  const { productByLocation = Function.prototype } = useGetProductByLocation(); // returns [] by Location;
+  ///////////////////
+  return useMemo(() => {
+    return productByLocation().map((item) => (
+      <ProductCart key={item.id} {...item} />
+    ));
+  }, [productByLocation]);
+}
+
+export default useScreenProducts;

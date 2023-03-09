@@ -45,4 +45,30 @@
             }
         }
     }
+    & button {
+        @extend %displayDirectionRow;
+        justify-content: space-between;
+        border-radius: index.$borderRadius;
+        background-color: index.$green;
+        color: index.$whiteSmoke;
+        cursor: pointer;
+        transition: index.$transition;
+        &:hover {
+            background-color: index.$whiteSmoke;
+            color: index.$green;
+            .icon {
+                background-color: index.$green;
+                color: index.$whiteSmoke;
+            }
+        }
+        .icon {
+            @extend %displayDirectionRow;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: index.$whiteSmoke;
+            color: index.$green;
+            transition: index.$transition;
+        }
+    }
 }
