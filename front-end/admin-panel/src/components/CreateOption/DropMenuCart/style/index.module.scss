@@ -1,0 +1,26 @@
+@use "../../../../generalStyles.scss";
+
+.dropCartMenu {
+    @extend %displayDirectionColumn;
+    width: 100%;
+    margin-top: 25px;
+    gap: 30px;
+    color: generalStyles.$darkBlue;
+    & > div {
+        @extend %displayDirectionColumn;
+        width: 100%;
+        height: 100%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        & > button {
+            @extend %styledDeleteButton;
+            color: white;
+        }
+    }
+    & > form {
+        width: 100%;
+        & > input {
+            width: 50%;
+        }
+    }
+}

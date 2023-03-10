@@ -1,22 +1,25 @@
-@use "../../../index.scss";
+@use "../../../generalStyles.scss";
 
 .updateForm {
     @extend %displayDirectionColumn;
+    & > button {
+        @extend %styledUpdateButton;
+    }
     gap: 10px;
     width: 250px;
     .typeText {
         width: 91%;
         padding: 10px;
-        border-radius: index.$borderRadius;
-        background-color: index.$darkBlue;
-        color: index.$whiteSmoke;
+        border-radius: generalStyles.$borderRadius;
+        background-color: generalStyles.$darkBlue;
+        color: generalStyles.$whiteSmoke;
         font-size: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         border: none;
     }
     ::placeholder {
-        color: index.$whiteSmoke;
+        color: generalStyles.$whiteSmoke;
         font-size: 0.9rem;
         font-weight: 100;
     }
@@ -25,13 +28,13 @@
         justify-content: space-between;
         width: 91%;
         padding: 8px;
-        border: 2px solid index.$darkBlue;
-        border-radius: index.$borderRadius;
+        border: 2px solid generalStyles.$darkBlue;
+        border-radius: generalStyles.$borderRadius;
         cursor: pointer;
-        transition: index.$transition;
+        transition: generalStyles.$transition;
         label {
-            transition: index.$transition;
-            color: index.$darkBlue;
+            transition: generalStyles.$transition;
+            color: generalStyles.$darkBlue;
             width: 100%;
             height: 100%;
             font-size: 0.9rem;
@@ -39,36 +42,10 @@
             cursor: pointer;
         }
         &:hover {
-            background-color: index.$darkBlue;
+            background-color: generalStyles.$darkBlue;
             label {
-                color: index.$whiteSmoke;
+                color: generalStyles.$whiteSmoke;
             }
-        }
-    }
-    & button {
-        @extend %displayDirectionRow;
-        justify-content: space-between;
-        border-radius: index.$borderRadius;
-        background-color: index.$green;
-        color: index.$whiteSmoke;
-        cursor: pointer;
-        transition: index.$transition;
-        &:hover {
-            background-color: index.$whiteSmoke;
-            color: index.$green;
-            .icon {
-                background-color: index.$green;
-                color: index.$whiteSmoke;
-            }
-        }
-        .icon {
-            @extend %displayDirectionRow;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: index.$whiteSmoke;
-            color: index.$green;
-            transition: index.$transition;
         }
     }
 }

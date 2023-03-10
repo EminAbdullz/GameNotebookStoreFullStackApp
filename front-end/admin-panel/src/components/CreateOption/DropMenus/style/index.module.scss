@@ -1,0 +1,35 @@
+@use "../../../../generalStyles.scss";
+
+.dropMenus {
+    @extend %displayDirectionRow;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    .dropMenuSection {
+        @extend %displayDirectionColumn;
+        width: 30%;
+        height: 100%;
+        &:first-child > div > div {
+            border-top: 3px solid black;
+            border-right: 3px solid black;
+            padding-bottom: 30px;
+            border-radius: generalStyles.$borderRadius;
+        }
+        &:last-child > div > div {
+            border-top: 3px solid black;
+            border-left: 3px solid black;
+            padding-bottom: 30px;
+            border-radius: generalStyles.$borderRadius;
+        }
+        &:nth-child(2) > div > form {
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+
+            border-radius: generalStyles.$borderRadius;
+        }
+        & > div > form {
+            padding-bottom: 30px;
+            padding-top: 30px;
+        }
+    }
+}

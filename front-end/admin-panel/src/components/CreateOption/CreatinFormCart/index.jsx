@@ -1,25 +1,34 @@
-import { DeleteIcon } from "../../../icons/delete";
 import { UpdateIcon } from "../../../icons/update";
 import Button from "../../Button";
+import styles from "./style/index.module.scss";
 
 function CreatingFormCart({
   properties,
   labels,
   onHandleSubmit = Function.prototype,
-  text,
-  url
+  url,
+  buttonText,
 }) {
-  
   const submit = (e) => {
     e.preventDefault();
-    onHandleSubmit(e.target[properties].value , url);
+    onHandleSubmit(e.target[properties].value, url);
   };
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className={styles.creatinFormCart}>
       <label htmlFor={properties}> {labels} </label>
-      <input id={properties} placeholder={properties} name={properties} />
-      <Button> {text} </Button>
+      <input
+        id={properties}
+        placeholder={properties}
+        name={properties}
+        autoComplete="off"
+      />
+      <Button>
+        <div className={styles.icon}>
+          <UpdateIcon />
+        </div>
+        {buttonText || "Create"}
+      </Button>
     </form>
   );
 }

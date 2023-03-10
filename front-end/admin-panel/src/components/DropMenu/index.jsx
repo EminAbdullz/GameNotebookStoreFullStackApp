@@ -12,8 +12,12 @@ function DropMenu({ data = [], text, getId = Function.prototype }) {
   }, [data]);
   /////////////////
   return (
-    <select defaultValue={false} onChange={(e) => getId(e.target.value)} className={styles.menu}>
-      <option disabled value={false} >
+    <select
+      defaultValue={false}
+      onChange={(e) => getId(e.target.value)}
+      className={styles.menu}
+    >
+      <option disabled value={false}>
         {text}
       </option>
       {selectOptions}

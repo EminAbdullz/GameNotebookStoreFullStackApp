@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
 import { UpdateIcon } from "../../icons/update";
 import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
-import LinkButton from "../Button";
+import Button from "../Button";
 import styles from "./style/index.module.scss";
 
 ///////////////////
@@ -17,9 +17,9 @@ function ProductUpdateForm() {
   const { ramId } = useSelector((state) => state.optionProperties);
   const { productId } = useSelector((state) => state.productProperties);
 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { setBestseller, setPremium, setAvailable } = productPropertiesAction;
   const { asyncUpdateProducts } = useUpdateDataBase();
@@ -109,12 +109,12 @@ function ProductUpdateForm() {
           onChange={() => dispatch(setAvailable())}
         />
       </div>
-      <LinkButton>
+      <Button>
         <div className={styles.icon}>
           <UpdateIcon />
         </div>
-        Update
-      </LinkButton>
+        {location.pathname === "/create" ? "Create" : location.pathname === "/update" ? "Update" : null}
+      </Button>
     </form>
   );
 }

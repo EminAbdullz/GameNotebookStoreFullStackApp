@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { DeleteIcon } from "../../../icons/delete";
 import { notificationAfterUpdating } from "../../../notifications/notifications";
 import { asyncThunkForUpdateOption } from "../../../store/options/updateOptionSlice";
 import Button from "../../Button";
 import CreatingFormCart from "../CreatinFormCart";
+import styles from "./style/index.module.scss";
 
 function DropMenuCart(props) {
   const dispatch = useDispatch();
 
-  const { id, name, text, labels, url } = props;
+  const { id, name, property, text, labels, url, buttonText } = props;
 
   const formData = new FormData();
 
@@ -35,21 +37,27 @@ function DropMenuCart(props) {
   };
 
   return (
-    <div onSubmit={onHandleSubmit}>
-      <p>
-        {text} : {name}
-      </p>
-      <p>Id : {id}</p>
-      <Button id={id} url={url}>
-        Delete
-      </Button>
+    <div onSubmit={onHandleSubmit} className={styles.dropCartMenu}>
       <CreatingFormCart
         labels={labels}
         properties={"Brand"}
         onHandleSubmit={onHandleSubmit}
         url={url}
         text={"Update"}
+        buttonText={buttonText}
       />
+      <div>
+        <p>
+          {text} : {name || property}
+        </p>
+        <p>Id : {id}</p>
+        <Button>
+          <div className={styles.icon} id={id} url={url}>
+            <DeleteIcon />
+          </div>
+          Delete
+        </Button>
+      </div>
     </div>
   );
 }

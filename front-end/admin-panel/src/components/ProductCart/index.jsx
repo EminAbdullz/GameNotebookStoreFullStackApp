@@ -10,13 +10,13 @@ function ProductCart(props) {
 
   const style = () => {
     if (location.pathname === "/delete" || location.pathname === "/create") {
-      return styles.productCardDelete;
+      return `${styles.productCardDelete} + ${styles.productCardHome}`;
     }
     if (location.pathname === "/") {
       return styles.productCardHome;
     }
     if (location.pathname === "/update") {
-      return styles.productCardUpdate;
+      return `${styles.productCardUpdate}+${styles.productCardHome}`;
     }
   };
 

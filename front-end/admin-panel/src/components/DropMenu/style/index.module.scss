@@ -1,17 +1,17 @@
-@use "../../../index.scss";
+@use "../../../generalStyles.scss";
 
 .menu {
-    background-color: index.$darkBlue;
-    color: index.$whiteSmoke;
+    background-color: generalStyles.$darkBlue;
+    color: generalStyles.$whiteSmoke;
     padding: 10px;
     font-size: 1rem;
-    border-radius: index.$borderRadius;
+    border-radius: generalStyles.$borderRadius;
     width: 250px;
     cursor: pointer;
     option {
-        transition: index.$transition;
+        transition: generalStyles.$transition;
         &:hover {
-            color: index.$orange;
+            color: generalStyles.$orange;
         }
     }
 }

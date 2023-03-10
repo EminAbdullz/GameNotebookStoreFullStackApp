@@ -4,6 +4,7 @@ import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "../../../api";
 import { notificationAfterCreating } from "../../../notifications/notifications";
 import { asyncThunkForCreateOption } from "../../../store/options/createOptionSlice";
 import CreatingFormCart from "../CreatinFormCart";
+import styles from "./style/index.module.scss";
 
 function CreatingForm() {
   const dispatch = useDispatch();
@@ -38,27 +39,24 @@ function CreatingForm() {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className={styles.creatingForm}>
       <CreatingFormCart
         onHandleSubmit={onHandleCreateOption}
         url={BRANDS_URL}
         properties={properties.brand}
         labels={properties.labels.brand}
-        text={"Create"}
       />
       <CreatingFormCart
         onHandleSubmit={onHandleCreateOption}
         url={COUNTRIES_URL}
         properties={properties.country}
         labels={properties.labels.country}
-        text={"Create"}
       />
       <CreatingFormCart
         onHandleSubmit={onHandleCreateOption}
         url={RAMS_URL}
         properties={properties.ram}
         labels={properties.labels.ram}
-        text={"Create"}
       />
     </div>
   );

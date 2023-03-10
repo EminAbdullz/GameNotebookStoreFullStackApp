@@ -1,8 +1,8 @@
-@use "../../../../index.scss";
+@use "../../../../generalStyles.scss";
 
 .navbar {
     margin-top: 5rem;
-    background-color: index.$darkBlue;
+    background-color: generalStyles.$darkBlue;
     height: 3rem;
     width: 100%;
 }

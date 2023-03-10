@@ -1,4 +1,4 @@
-@use "../../../index.scss";
+@use "../../../generalStyles.scss";
 
 .navigation {
     @extend %displayDirectionRow;
@@ -8,30 +8,30 @@
     justify-content: space-evenly;
     a {
         text-decoration: none;
-        color: index.$whiteSmoke;
+        color: generalStyles.$whiteSmoke;
         cursor: pointer;
-        transition: index.$transition;
+        transition: generalStyles.$transition;
         font-size: 1.2rem;
         font-weight: 600;
         &:hover {
-            color: index.$orange;
+            color: generalStyles.$orange;
         }
     }
     .icon {
         @extend %displayDirectionRow;
-        background-color: index.$whiteSmoke;
-        border-radius: index.$borderRadius;
+        background-color: generalStyles.$whiteSmoke;
+        border-radius: generalStyles.$borderRadius;
         width: 35px;
         height: 35px;
         font-size: 1.2rem;
-        color: index.$darkBlue;
+        color: generalStyles.$darkBlue;
         cursor: pointer;
-        transition: index.$transition;
-        border: 1px solid index.$darkBlue;
+        transition: generalStyles.$transition;
+        border: 1px solid generalStyles.$darkBlue;
         &:hover {
-            background-color: index.$darkBlue;
-            border: 1px solid index.$whiteSmoke;
-            color: index.$whiteSmoke;
+            background-color: generalStyles.$darkBlue;
+            border: 1px solid generalStyles.$whiteSmoke;
+            color: generalStyles.$whiteSmoke;
         }
     }
 }

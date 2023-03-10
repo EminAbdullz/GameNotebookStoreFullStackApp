@@ -1,0 +1,26 @@
+@use "../../../../generalStyles.scss";
+
+.creatinFormCart {
+    @extend %displayDirectionColumn;
+    gap: 20px;
+    & > button {
+        @extend %styledUpdateButton;
+    }
+    & > label {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: generalStyles.$darkBlue;
+    }
+    & > input {
+        padding: 10px;
+        border: 1px solid generalStyles.$darkBlue;
+        font-weight: 500;
+        color: generalStyles.$darkBlue;
+        border-radius: generalStyles.$borderRadius;
+    }
+    ::placeholder {
+        color: generalStyles.$darkBlue;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}

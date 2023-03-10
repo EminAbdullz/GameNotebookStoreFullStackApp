@@ -1,0 +1,27 @@
+@use "../../../../generalStyles.scss";
+
+.creatingForm {
+    @extend %displayDirectionRow;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    & > form {
+        width: 30%;
+        height: 100%;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        & > input {
+            width: 50%;
+        }
+    }
+    & > form:first-child {
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        border-radius: generalStyles.$borderRadius;
+    }
+    & > form:last-child {
+        border-left: 3px solid black;
+        border-bottom: 3px solid black;
+        border-radius: generalStyles.$borderRadius;
+    }
+}

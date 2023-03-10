@@ -1,0 +1,87 @@
+// colors
+$blue: #afdbfd;
+$darkBlue: #1e2760;
+$maroon: #810001;
+$whiteSmoke: #ededed;
+$orange: #c75e1a;
+$black: #000002;
+$green: #028910;
+$transition: 0.3s all ease-in-out;
+$borderRadius: 25px;
+//////
+%displayDirectionColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%displayDirectionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%styledUpdateButton {
+    @extend %displayDirectionRow;
+    justify-content: space-between;
+    border-radius: $borderRadius;
+    background-color: $green;
+    color: $whiteSmoke;
+    cursor: pointer;
+    transition: $transition;
+    &:hover {
+      background-color: $whiteSmoke;
+      color: $green;
+      .icon {
+        background-color: $green;
+        color: $whiteSmoke;
+      }
+    }
+    .icon {
+      @extend %displayDirectionRow;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $whiteSmoke;
+      color: $green;
+      transition: $transition;
+    }
+}
+
+%styledDeleteButton {
+  @extend %displayDirectionRow;
+  justify-content: space-around;
+  background-color: $maroon;
+  .icon {
+    color: $maroon;
+  }
+  &:hover {
+    background-color: $whiteSmoke;
+    border: 1px solid $maroon;
+    a {
+      color: $maroon;
+    }
+    .icon {
+      color: $whiteSmoke;
+      background-color: $maroon;
+    }
+  }
+  .icon {
+    @extend %displayDirectionRow;
+    transition: $transition;
+    background-color: $whiteSmoke;
+    height: 30px;
+    width: 30px;
+    border-radius: $borderRadius;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+  letter-spacing: 1.5px;
+  height: 100%;
+}
