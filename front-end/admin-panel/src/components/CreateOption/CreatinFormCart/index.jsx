@@ -6,12 +6,13 @@ function CreatingFormCart({
   properties,
   labels,
   onHandleSubmit = Function.prototype,
-  text
+  text,
+  url
 }) {
-    
+  
   const submit = (e) => {
     e.preventDefault();
-    onHandleSubmit(e.target[properties].value);
+    onHandleSubmit(e.target[properties].value , url);
   };
 
   return (

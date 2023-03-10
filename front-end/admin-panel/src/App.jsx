@@ -10,10 +10,12 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import Options from "./pages/Options";
 import { useApi } from "./hooks/useApi";
-import { getBrands } from "./store/brands/brandsSlice";
-import { getCountries } from "./store/countries/countriesSlice";
-import { getRams } from "./store/rams/ramsSlice";
-import { getProducts } from "./store/products/productsSlice";
+import {
+  asyncThunkToGetBrands,
+  asyncThunkToGetCountries,
+  asyncThunkToGetRams,
+} from "./store/options/optionsSlice";
+import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "./api";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -22,9 +24,9 @@ function App() {
 
   const { isAdmin = null } = user;
 
-  useApi(getBrands());
-  useApi(getCountries());
-  useApi(getRams());
+  useApi(asyncThunkToGetBrands(BRANDS_URL));
+  useApi(asyncThunkToGetCountries(COUNTRIES_URL));
+  useApi(asyncThunkToGetRams(RAMS_URL));
 
   ////////////////
   return (

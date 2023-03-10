@@ -1,45 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
-import useUpdateDataBase from "../../../hooks/useUpdateDataBase";
-import { brandsPropertiesActions } from "../../../store/brands/brandsProperties";
-import { countriesPropertiesActions } from "../../../store/countries/countriesPropertiesSlice";
-import { ramsPropertiesActions } from "../../../store/rams/ramsPropertiesSlice";
+import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "../../../api";
+import { optionPropertiesActions } from "../../../store/options/optionsProperties";
 import DropMenu from "../../DropMenu";
 import DropMenuCart from "../DropMenuCart";
 
 function DropMenus() {
   const dispatch = useDispatch();
 
-  const { brands = [] } = useSelector((state) => state.brands);
-  const { countries = [] } = useSelector((state) => state.countries);
-  const { rams = [] } = useSelector((state) => state.rams);
+  const { brands, countries, rams } = useSelector((state) => state.options);
 
-  const { optionBrandId = "" } = useSelector((state) => state.brandProperties);
-  const { optionCountryId = "" } = useSelector(
-    (state) => state.countriesProperties
-  );
-  const { optionRamId = "" } = useSelector((state) => state.ramsProperties);
+  const { optionBrandId } = useSelector((state) => state.optionProperties);
+  const { optionCountryId } = useSelector((state) => state.optionProperties);
+  const { optionRamId } = useSelector((state) => state.optionProperties);
 
-  const { getOptionBrandId = Function.prototype } = brandsPropertiesActions;
-  const { getOptionCountryId = Function.prototype } =
-    countriesPropertiesActions;
-  const { getOptionRamId = Function.prototype } = ramsPropertiesActions;
-
-  const {
-    asyncUpdateBrand = Function.prototype,
-    asyncDeleteBrand = Function.prototype,
-  } = useUpdateDataBase().asyncUpdateOptions.brands;
+  const { getOptionBrandId, getOptionCountryId, getOptionRamId } =
+    optionPropertiesActions;
 
   const onHandleGetBrandId = (id) => void dispatch(getOptionBrandId(id));
   const onHandleGetCountryId = (id) => void dispatch(getOptionCountryId(id));
   const onHandleGetRamId = (id) => void dispatch(getOptionRamId(id));
 
-  const screenOption = (
-    options = [],
-    id = "",
-    text = "",
-    asyncUpdateBrand = Function.prototype,
-    asyncDeleteBrand = Function.prototype
-  ) => {
+  const screenOption = (options, id, text, labels, url) => {
     if (id !== "") {
       const brand = options.find((item) => item.id === Number(id));
       return [brand].map((item) => (
@@ -47,31 +28,37 @@ function DropMenus() {
           {...item}
           key={item.id}
           text={text}
-          asyncUpdateBrand={asyncUpdateBrand}
-          asyncDeleteBrand={asyncDeleteBrand}
+          labels={labels}
           id={id}
+          url={url}
         />
       ));
     }
     return [];
   };
+
+
   return (
     <div>
       <DropMenu data={brands} text={"Brands"} getId={onHandleGetBrandId} />
-      {/* <DropMenu
+      <DropMenu
         data={countries}
         text={"Countries"}
         getId={onHandleGetCountryId}
-      /> */}
-      {/* <DropMenu data={rams} text={"Rams"} getId={onHandleGetRamId} /> */}
+      />
+      <DropMenu data={rams} text={"Rams"} getId={onHandleGetRamId} />
+
+      {screenOption(brands, optionBrandId, "Brand", "Update Brand", BRANDS_URL)}
 
       {screenOption(
-        brands,
-        optionBrandId,
-        "Brand",
-        asyncUpdateBrand,
-        asyncDeleteBrand,
+        countries,
+        optionCountryId,
+        "Country",
+        "Update Country",
+        COUNTRIES_URL
       )}
+
+      {screenOption(rams, optionRamId, "Ram", "Update Ram", RAMS_URL)}
     </div>
   );
 }

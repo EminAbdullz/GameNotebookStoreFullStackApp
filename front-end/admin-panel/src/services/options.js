@@ -1,6 +1,6 @@
 import { admin } from "./base";
 
-export const createBrandRequest = async (url = "", param = {}) => {
+export const createOptionRequest = async (url = "", param = {}) => {
   try {
     const response = await admin.post(url, param);
     return response?.data;
@@ -11,7 +11,7 @@ export const createBrandRequest = async (url = "", param = {}) => {
 
 /////
 
-export const updateBrandRequest = async (url = "", param = {}) => {
+export const updateOptionRequest = async (url = "", param = {}) => {
   try {
     const response = await admin.put(url, param);
     return response?.data;
@@ -22,7 +22,7 @@ export const updateBrandRequest = async (url = "", param = {}) => {
 
 /////
 
-export const deleteBrandRequest = async (url = "", param = "") => {
+export const deleteOptionRequest = async (url = "", param = "") => {
   try {
     const response = await admin.delete(url + param);
     return response?.data;

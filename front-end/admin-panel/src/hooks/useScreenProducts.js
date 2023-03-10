@@ -4,7 +4,8 @@ import useGetProductByLocation from "./useGetProductByLocation";
 
 function useScreenProducts() {
   ///////////////////
-  const { productByLocation = Function.prototype } = useGetProductByLocation(); // returns [] by Location;
+  const { productByLocation } = useGetProductByLocation(); // returns [] by Location;
+
   ///////////////////
   return useMemo(() => {
     return productByLocation().map((item) => (

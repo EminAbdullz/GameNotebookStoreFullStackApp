@@ -7,8 +7,8 @@ const initialState = {
   error: null,
 };
 ///////////////////////
-export const postUpdatedProduct = createAsyncThunk(
-  "change-product/changeProduct",
+export const asyncThunkForUpdateProducts = createAsyncThunk(
+  "change-product/asyncThunkForUpdateProducts",
   async (payload) => {
     const response = await updateProductRequest(PRODUCTS_URL, payload);
     return response;
@@ -21,15 +21,15 @@ const updateProductSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(postUpdatedProduct.pending, (state) => {
+      .addCase(asyncThunkForUpdateProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(postUpdatedProduct.fulfilled, (state, { payload }) => {
+      .addCase(asyncThunkForUpdateProducts.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.error = null;
       })
-      .addCase(postUpdatedProduct.rejected, (state, { error }) => {
+      .addCase(asyncThunkForUpdateProducts.rejected, (state, { error }) => {
         state.loading = false;
         state.error = error.message;
       });

@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import useUpdateDataBase from "../../../hooks/useUpdateDataBase";
+import { toast } from "react-toastify";
+import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "../../../api";
+import { notificationAfterCreating } from "../../../notifications/notifications";
+import { asyncThunkForCreateOption } from "../../../store/options/createOptionSlice";
 import CreatingFormCart from "../CreatinFormCart";
 
 function CreatingForm() {
@@ -16,34 +19,47 @@ function CreatingForm() {
     },
   };
 
-  const { asyncCreateBrand = Function.prototype } =
-    useUpdateDataBase().asyncUpdateOptions.brands;
-
   const formData = new FormData();
 
-  const onHandleCreateBrand = (name) => {
+  const onHandleCreateOption = (name, url) => {
+    formData.append("Property", name);
     formData.append("Name", name);
-    asyncCreateBrand(formData);
+
+    if (!formData.get("Name") || !formData.get("Property")) {
+      toast.error("Invalid data");
+    } else {
+      const data = { url, formData };
+      dispatch(asyncThunkForCreateOption(data));
+      notificationAfterCreating();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   return (
-    <div>
-      <div>
-        <CreatingFormCart
-          onHandleSubmit={onHandleCreateBrand}
-          properties={properties.brand}
-          labels={properties.labels.brand}
-          text={"Create"}
-        />
-      </div>
-      {/* <CreatingFormCart
-        properties={properties.country}
-        labels={properties.labels.country}
+    <div style={{ display: "flex" }}>
+      <CreatingFormCart
+        onHandleSubmit={onHandleCreateOption}
+        url={BRANDS_URL}
+        properties={properties.brand}
+        labels={properties.labels.brand}
+        text={"Create"}
       />
       <CreatingFormCart
+        onHandleSubmit={onHandleCreateOption}
+        url={COUNTRIES_URL}
+        properties={properties.country}
+        labels={properties.labels.country}
+        text={"Create"}
+      />
+      <CreatingFormCart
+        onHandleSubmit={onHandleCreateOption}
+        url={RAMS_URL}
         properties={properties.ram}
         labels={properties.labels.ram}
-      /> */}
+        text={"Create"}
+      />
     </div>
   );
 }

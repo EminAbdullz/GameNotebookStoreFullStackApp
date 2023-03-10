@@ -41,6 +41,33 @@
 --WHERE Brands.Id = @Id
 --END
 
+--CREATE PROC GetRamById @Id INT
+--AS
+--BEGIN
+--SELECT * FROM Rams WHERE Rams.Id = @Id
+--END
+
+--CREATE PROC DeleteRamById @Id INT
+--AS
+--BEGIN
+--DELETE FROM Rams WHERE Rams.Id = @Id
+--END
+
+--CREATE PROC AddRam @Property NVARCHAR (255)
+--AS
+--BEGIN
+--INSERT INTO Rams 
+--OUTPUT inserted.Id
+--VALUES (@Property)
+--END
+
+--CREATE PROC UpdateRam @Id INT, @Property NVARCHAR(255)
+--AS
+--BEGIN
+--UPDATE Rams SET Rams.Property= @Property
+--OUTPUT inserted.Id
+--WHERE Rams.Id = @Id
+--END
 
 
 --///////////////////////////////////////////

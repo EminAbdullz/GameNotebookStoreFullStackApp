@@ -1,23 +1,37 @@
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { notificationAfterUpdating } from "../../../notifications/notifications";
+import { asyncThunkForUpdateOption } from "../../../store/options/updateOptionSlice";
 import Button from "../../Button";
 import CreatingFormCart from "../CreatinFormCart";
 
 function DropMenuCart(props) {
-  const {
-    id = "",
-    name = "",
-    text = "",
-    asyncUpdateBrand = Function.prototype,
-    asyncDeleteBrand = Function.prototype,
-  } = props;
+  const dispatch = useDispatch();
 
+  const { id, name, text, labels, url } = props;
 
   const formData = new FormData();
 
-  const onHandleSubmit = (name) => {
+  const onHandleSubmit = (name, url) => {
     formData.append("Name", name);
+    formData.append("Property", name);
     formData.append("Id", id);
-    asyncUpdateBrand(formData);
+
+    if (url === undefined) return null;
+    if (
+      !formData.get("Name") ||
+      !formData.get("Id") ||
+      !formData.get("Property")
+    ) {
+      toast.error("Invalid data");
+    } else {
+      const data = { url, formData };
+      dispatch(asyncThunkForUpdateOption(data));
+      notificationAfterUpdating();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   return (
@@ -26,11 +40,14 @@ function DropMenuCart(props) {
         {text} : {name}
       </p>
       <p>Id : {id}</p>
-      <Button id={id}>Delete</Button>
+      <Button id={id} url={url}>
+        Delete
+      </Button>
       <CreatingFormCart
-        labels={"Update Brand"}
+        labels={labels}
         properties={"Brand"}
         onHandleSubmit={onHandleSubmit}
+        url={url}
         text={"Update"}
       />
     </div>

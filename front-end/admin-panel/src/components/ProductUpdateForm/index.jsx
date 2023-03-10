@@ -12,16 +12,16 @@ function ProductUpdateForm() {
   const { isBestseller, isPremium, isAvailable } = useSelector(
     (state) => state.productProperties
   );
-  const { brandId = "" } = useSelector((state) => state.brandProperties);
-  const { countryId = "" } = useSelector((state) => state.countriesProperties);
-  const { ramId = "" } = useSelector((state) => state.ramsProperties);
-  const { productId = "" } = useSelector((state) => state.productProperties);
-  ///////////////
+  const { brandId } = useSelector((state) => state.optionProperties);
+  const { countryId } = useSelector((state) => state.optionProperties);
+  const { ramId } = useSelector((state) => state.optionProperties);
+  const { productId } = useSelector((state) => state.productProperties);
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { setBestseller, setPremium, setAvailable } = productPropertiesAction;
-
   const { asyncUpdateProducts } = useUpdateDataBase();
 
   const formData = new FormData();

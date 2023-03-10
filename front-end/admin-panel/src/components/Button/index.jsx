@@ -1,20 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
-import { brandsPropertiesActions } from "../../store/brands/brandsProperties";
-import { deleteBrand } from "../../store/brands/deleteBrandSlice";
+import { notificationAfterDeleting } from "../../notifications/notifications";
+// import { notificationAfterDeleting } from "../../notifications/notifications";
+import { asyncThunkForDeleteOption } from "../../store/options/deleteOptionSlice";
 import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
-import { updatedProductAction } from "../../store/products/updateProductSlice";
 import styles from "./style/index.module.scss";
 
-function Button({ id, children, onHandleSubmit, formData }) {
+function Button({ id, children, url }) {
   const dispatch = useDispatch();
 
   const location = useLocation();
 
   const { asyncUpdateProducts = Function.prototype } = useUpdateDataBase();
-  const { asyncDeleteBrand } = useUpdateDataBase().asyncUpdateOptions.brands;
-  const { getBrandId = Function.prototype } = brandsPropertiesActions;
   const { getProductId = Function.prototype } = productPropertiesAction;
 
   const onHandleClick = (e) => {
@@ -26,7 +25,17 @@ function Button({ id, children, onHandleSubmit, formData }) {
     }
 
     if (location.pathname === "/options" && e.target.innerText === "Delete") {
-      asyncDeleteBrand(id);
+      if (id === "") {
+        toast.error("Invalid id");
+      } else {
+        const data = { url, id };
+        notificationAfterDeleting(() => {
+          dispatch(asyncThunkForDeleteOption(data));
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        });
+      }
     }
   };
 

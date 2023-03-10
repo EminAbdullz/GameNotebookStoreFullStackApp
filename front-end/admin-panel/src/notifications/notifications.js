@@ -10,7 +10,7 @@ export const notificationAfterDeleting = (callback = Function.prototype) => {
     confirmButtonText: "Delete",
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("Deleted!", "Product has been deleted !", "success");
+      Swal.fire("Deleted!", "", "success");
       callback();
     }
   });
@@ -19,7 +19,7 @@ export const notificationAfterDeleting = (callback = Function.prototype) => {
 export const notificationAfterCreating = () => {
   Swal.fire({
     icon: "success",
-    title: "Product has been created.",
+    title: "Created.",
     showConfirmButton: false,
     timer: 1500,
   });
@@ -28,7 +28,7 @@ export const notificationAfterCreating = () => {
 export const notificationAfterUpdating = () => {
   Swal.fire({
     icon: "success",
-    title: "Product has been updated.",
+    title: "Updated.",
     showConfirmButton: false,
     timer: 1500,
   });

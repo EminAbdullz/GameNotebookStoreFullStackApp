@@ -8,8 +8,8 @@ const initialState = {
   error: null,
 };
 ////////////
-export const deleteProduct = createAsyncThunk(
-  "delete-product/deleteProduct",
+export const asyncThunkForDeleteProduct = createAsyncThunk(
+  "delete-product/asyncThunkForDeleteProduct",
   async (id = "") => {
     const response = await deleteProductRequest(PRODUCTS_URL + id);
     return response;
@@ -22,15 +22,15 @@ export const deletedProductSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(deleteProduct.pending, (state) => {
+      .addCase(asyncThunkForDeleteProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(deleteProduct.fulfilled, (state) => {
+      .addCase(asyncThunkForDeleteProduct.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })
-      .addCase(deleteProduct.rejected, (state, { error }) => {
+      .addCase(asyncThunkForDeleteProduct.rejected, (state, { error }) => {
         state.error = error.message;
         state.loading = false;
         toast.error(` Invalid values !! `, { position: "top-right" });

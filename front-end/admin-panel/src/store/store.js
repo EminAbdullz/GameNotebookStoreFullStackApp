@@ -5,14 +5,10 @@ import productPropertiesSlice from "./products/productPropertiesSlice";
 import createProductSlice from "./products/createProductSlice";
 import updateProductSlice from "./products/updateProductSlice";
 import deleteProductSlice from "./products/deleteProductSlice";
-import brandsSlice from "./brands/brandsSlice";
-import createBrandSlice from "./brands/createBrandSlice";
-import countriesSlice from "./countries/countriesSlice";
-import ramsSlice from "./rams/ramsSlice";
-import deleteBrandSlice from "./brands/deleteBrandSlice";
-import brandsPropertiesSlice from "./brands/brandsProperties";
-import countriesPropertiesSlice from "./countries/countriesPropertiesSlice";
-import ramsPropertiesSlice from "./rams/ramsPropertiesSlice";
+import optionsSlice from "./options/optionsSlice";
+import createOptionSlice from "./options/createOptionSlice";
+import optionPropertiesSlice from "./options/optionsProperties";
+import deleteOptionSlice from "./options/deleteOptionSlice";
 
 const store = configureStore({
   reducer: {
@@ -24,16 +20,11 @@ const store = configureStore({
     productProperties: productPropertiesSlice,
     deleteProduct: deleteProductSlice,
     /////
-    brands: brandsSlice,
-    createBrands: createBrandSlice,
-    deleteBrands: deleteBrandSlice,
-    brandProperties: brandsPropertiesSlice,
+    options: optionsSlice,
+    createOption: createOptionSlice,
+    deleteOption: deleteOptionSlice,
+    optionProperties: optionPropertiesSlice,
     /////
-    countries: countriesSlice,
-    countriesProperties: countriesPropertiesSlice,
-    /////
-    rams: ramsSlice,
-    ramsProperties: ramsPropertiesSlice,
   },
 });
 

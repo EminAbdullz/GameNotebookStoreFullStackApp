@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getProducts } from "../../store/products/productsSlice/index";
+import { asyncThunkToGetProducts } from "../../store/products/productsSlice/index";
 import { useApi } from "../../hooks/useApi";
 import Main from "../../components/layout/main";
 import Loader from "../../components/Loader";
@@ -11,10 +11,9 @@ import { Link } from "react-router-dom";
 ////////////////////
 function Home() {
   const { loading } = useSelector((state) => state.products);
-  //////////////////////
-  useApi(getProducts());
 
-  //////////////////////
+  useApi(asyncThunkToGetProducts());
+
   return (
     <div className={styles.home}>
       {loading === true ? <Loader /> : null}
