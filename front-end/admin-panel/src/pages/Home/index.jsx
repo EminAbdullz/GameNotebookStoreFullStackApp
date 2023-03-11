@@ -11,11 +11,11 @@ import { Link } from "react-router-dom";
 ////////////////////
 function Home() {
   const { loading } = useSelector((state) => state.products);
-
   useApi(asyncThunkToGetProducts());
 
   return (
     <div className={styles.home}>
+
       {loading === true ? <Loader /> : null}
       <Link to={"/create"}>
         <TextByLocation />

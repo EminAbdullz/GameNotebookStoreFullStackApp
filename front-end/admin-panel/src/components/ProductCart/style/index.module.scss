@@ -1,44 +1,88 @@
 @use "../../../generalStyles.scss";
 
-.productCardDelete {
-    width: 50%;
-}
-///////////////
 .productCardHome {
-    width: 30%;
-    color: generalStyles.$black;
-    border-radius: generalStyles.$borderRadius;
-    background-color: generalStyles.$blue;
-    padding: 10px;
-    p {
-        font-weight: 600;
-        transition: generalStyles.$transition;
-        font-size: 1rem;
-        cursor: pointer;
-        &:hover {
-            color: generalStyles.$orange;
-        }
-    }
-    img {
-        width: 100%;
-    }
-    .buttons {
-        @extend %displayDirectionRow;
-        justify-content: space-between;
-        padding-top: 1.5rem;
-        & button:first-child {
-            @extend %styledUpdateButton;
-        }
-        & button:last-child {
-            @extend %styledDeleteButton;
-        }
-    }
+    @extend .productCard;
+    width: 21%;
 }
-///////////////
+.productCard {
+    @extend .productCard;
+}
 .productCardUpdate {
-    .buttons {
-        & button:first-child {
+    @extend .productCard;
+    & > .buttons {
+        & > button:first-child {
             display: none;
         }
     }
 }
+
+// .productCardCreate{
+//     width: 50%;
+//     color: generalStyles.$black;
+//     border-radius: generalStyles.$borderRadius;
+//     background-color: generalStyles.$blue;
+//     padding: 10px;
+//     p {
+//         font-weight: 600;
+//         transition: generalStyles.$transition;
+//         font-size: 1rem;
+//         cursor: pointer;
+//         &:hover {
+//             color: generalStyles.$orange;
+//         }
+//     }
+//     img {
+//         width: 100%;
+//     }
+//     .buttons {
+//         @extend %displayDirectionRow;
+//         justify-content: space-between;
+//         padding-top: 1.5rem;
+//         & button:first-child {
+//             @extend .styledUpdateButton;
+//         }
+//         & button:last-child {
+//             @extend .styledDeleteButton;
+//         }
+//     }
+// }
+// ///////////////
+// .productCardHome {
+//     width: 21%;
+//     color: generalStyles.$black;
+//     border-radius: generalStyles.$borderRadius;
+//     background-color: generalStyles.$blue;
+//     padding: 10px;
+//     p {
+//         font-weight: 600;
+//         transition: generalStyles.$transition;
+//         font-size: 1rem;
+//         cursor: pointer;
+//         &:hover {
+//             color: generalStyles.$orange;
+//         }
+//     }
+//     img {
+//         width: 100%;
+//     }
+//     .buttons {
+//         @extend %displayDirectionRow;
+//         justify-content: space-between;
+//         padding-top: 1.5rem;
+//         & button:first-child {
+//             @extend .styledUpdateButton;
+//         }
+//         & button:last-child {
+//             @extend .styledDeleteButton;
+//         }
+//     }
+// }
+// ///////////////
+// .productCardUpdate {
+//     width: 50%;
+//     .buttons {
+//         & button:first-child {
+//             display: none;
+//         }
+//     }
+// }

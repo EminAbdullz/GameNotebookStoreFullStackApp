@@ -1,8 +1,8 @@
 @use "../../../../generalStyles.scss";
 
 .navbar {
-    margin-top: 5rem;
     background-color: generalStyles.$darkBlue;
-    height: 3rem;
+    height: 50px;
     width: 100%;
+    margin-top: 40px;
 }

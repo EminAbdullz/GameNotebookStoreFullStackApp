@@ -51,8 +51,8 @@ function DropMenuCart(props) {
           {text} : {name || property}
         </p>
         <p>Id : {id}</p>
-        <Button>
-          <div className={styles.icon} id={id} url={url}>
+        <Button id={id} url={url}>
+          <div className={styles.icon}>
             <DeleteIcon />
           </div>
           Delete

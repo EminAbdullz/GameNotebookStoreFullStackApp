@@ -3,7 +3,7 @@
 .updateForm {
     @extend %displayDirectionColumn;
     & > button {
-        @extend %styledUpdateButton;
+        @extend .styledUpdateButton;
     }
     gap: 10px;
     width: 250px;

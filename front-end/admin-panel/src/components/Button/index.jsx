@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
 import { notificationAfterDeleting } from "../../notifications/notifications";
-// import { notificationAfterDeleting } from "../../notifications/notifications";
 import { asyncThunkForDeleteOption } from "../../store/options/deleteOptionSlice";
 import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
 import styles from "./style/index.module.scss";

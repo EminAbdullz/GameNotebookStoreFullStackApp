@@ -4,7 +4,7 @@
     @extend %displayDirectionRow;
     width: 100%;
     background-color: generalStyles.$darkBlue;
-    height: 3rem;
+    height: 50px;
     .icon {
         @extend %displayDirectionRow;
         border: 2px solid red;

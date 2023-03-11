@@ -9,14 +9,14 @@ function ProductCart(props) {
   const location = useLocation();
 
   const style = () => {
-    if (location.pathname === "/delete" || location.pathname === "/create") {
-      return `${styles.productCardDelete} + ${styles.productCardHome}`;
-    }
     if (location.pathname === "/") {
       return styles.productCardHome;
     }
+    if (location.pathname === "/create" || location.pathname === "/delete") {
+      return styles.productCard;
+    }
     if (location.pathname === "/update") {
-      return `${styles.productCardUpdate}+${styles.productCardHome}`;
+      return styles.productCardUpdate;
     }
   };
 

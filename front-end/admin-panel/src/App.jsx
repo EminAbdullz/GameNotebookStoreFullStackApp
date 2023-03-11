@@ -16,6 +16,8 @@ import {
   asyncThunkToGetRams,
 } from "./store/options/optionsSlice";
 import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "./api";
+import Users from "./pages/Users";
+import "./generalStyles.scss";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -30,17 +32,20 @@ function App() {
 
   ////////////////
   return (
-    <div className="App" >
+    <div className="App">
       <Router>
         <ToastContainer />
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<Update />} />
-          <Route path="/update" element={<Update />} />
-          <Route path="/delete" element={<DeleteProduct />} />
-          <Route path="/options" element={<Options />} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<Update />} />
+            <Route path="/update" element={<Update />} />
+            <Route path="/delete" element={<DeleteProduct />} />
+            <Route path="/options" element={<Options />} />
+            <Route path="/users" element={<Users />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
 

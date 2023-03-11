@@ -51,12 +51,16 @@ function ProductUpdateForm() {
     ) {
       toast.error(`Invalid values !!`, { position: "top-right" });
     } else {
-      setTimeout(() => {
-        navigate("/");
-      }, 500);
-      asyncUpdateProducts(formData);
+      // setTimeout(() => {
+      //   navigate("/");
+      // }, 500);
+      // asyncUpdateProducts(formData);
     }
   };
+
+
+  console.log(productId);
+
 
   /////
   return (

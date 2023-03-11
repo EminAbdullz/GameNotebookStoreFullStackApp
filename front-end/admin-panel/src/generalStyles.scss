@@ -1,4 +1,4 @@
-// colors
+// variables
 $blue: #afdbfd;
 $darkBlue: #1e2760;
 $maroon: #810001;
@@ -15,50 +15,54 @@ $borderRadius: 25px;
   align-items: center;
   justify-content: center;
 }
-
 %displayDirectionRow {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-%styledUpdateButton {
-    @extend %displayDirectionRow;
-    justify-content: space-between;
-    border-radius: $borderRadius;
-    background-color: $green;
-    color: $whiteSmoke;
-    cursor: pointer;
-    transition: $transition;
-    &:hover {
-      background-color: $whiteSmoke;
+/////
+.styledUpdateButton {
+  @extend %displayDirectionRow;
+  justify-content: space-between;
+  border: 1px solid $green;
+  border-radius: $borderRadius;
+  background-color: $green;
+  color: $whiteSmoke;
+  cursor: pointer;
+  transition: $transition;
+  &:hover {
+    color: $green;
+    a {
       color: $green;
-      .icon {
-        background-color: $green;
-        color: $whiteSmoke;
-      }
     }
+    background-color: $whiteSmoke;
     .icon {
-      @extend %displayDirectionRow;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: $whiteSmoke;
-      color: $green;
-      transition: $transition;
+      background-color: $green;
+      color: $whiteSmoke;
     }
+  }
+  .icon {
+    @extend %displayDirectionRow;
+    width: 30px;
+    height: 30px;
+    border-radius: $borderRadius;
+    background-color: $whiteSmoke;
+    color: $green;
+    transition: $transition;
+  }
 }
-
-%styledDeleteButton {
+.styledDeleteButton {
   @extend %displayDirectionRow;
   justify-content: space-around;
   background-color: $maroon;
+  border: 1px solid $maroon;
+  color: $whiteSmoke;
   .icon {
     color: $maroon;
   }
   &:hover {
     background-color: $whiteSmoke;
-    border: 1px solid $maroon;
+    color: $maroon;
     a {
       color: $maroon;
     }
@@ -76,7 +80,46 @@ $borderRadius: 25px;
     border-radius: $borderRadius;
   }
 }
-
+.productCard {
+  width: 50%;
+  color: $black;
+  border-radius: $borderRadius;
+  background-color: $blue;
+  padding: 10px;
+  p {
+    font-weight: 600;
+    transition: $transition;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      color: $orange;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  .buttons {
+    @extend %displayDirectionRow;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    & button:first-child {
+      @extend .styledUpdateButton;
+    }
+    & button:last-child {
+      @extend .styledDeleteButton;
+    }
+  }
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content {
+  flex: 1;
+  padding: 20px;
+  padding-top: 50px;
+}
 body {
   margin: 0;
   padding: 0;

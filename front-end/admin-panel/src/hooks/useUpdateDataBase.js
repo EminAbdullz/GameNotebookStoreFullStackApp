@@ -28,8 +28,9 @@ function useUpdateDataBase() {
 
   const asyncUpdateProducts = (payload) => {
     if (location.pathname === "/create") {
-      dispatch(asyncThunkForCreateProduct(payload));
-      notificationAfterCreating();
+      console.log(payload);
+      // dispatch(asyncThunkForCreateProduct(payload));
+      // notificationAfterCreating();
     }
     if (location.pathname === "/update") {
       dispatch(asyncThunkForUpdateProducts(payload));

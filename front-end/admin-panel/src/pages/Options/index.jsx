@@ -4,11 +4,9 @@ import styles from "./style/index.module.scss";
 
 function Options() {
   return (
-    <div className={styles.options} >
-      <CreatingForm />
-      {/* <span className={styles.lineLeft} /> */}
-      {/* <span className={styles.lineRight} /> */}
-      <DropMenus />
+    <div className={styles.options}>
+        <CreatingForm />
+        <DropMenus />
     </div>
   );
 }
