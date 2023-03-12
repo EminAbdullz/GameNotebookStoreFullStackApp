@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -20,17 +20,14 @@ function useUpdateDataBase() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { productId } = useSelector((state) => state.productProperties);
-
   const { resetProductId } = productPropertiesAction;
   const { resetCreatedProduct } = createProductAction;
   const { resetBrandId, resetCountryId, resetRamId } = optionPropertiesActions;
 
   const asyncUpdateProducts = (payload) => {
     if (location.pathname === "/create") {
-      console.log(payload);
-      // dispatch(asyncThunkForCreateProduct(payload));
-      // notificationAfterCreating();
+      dispatch(asyncThunkForCreateProduct(payload));
+      notificationAfterCreating();
     }
     if (location.pathname === "/update") {
       dispatch(asyncThunkForUpdateProducts(payload));
@@ -38,10 +35,10 @@ function useUpdateDataBase() {
     }
     if (location.pathname === "/delete") {
       notificationAfterDeleting(() => {
-        dispatch(asyncThunkForDeleteProduct(productId));
+        dispatch(asyncThunkForDeleteProduct(payload));
         setTimeout(() => {
           navigate("/");
-          dispatch(resetProductId(productId));
+          dispatch(resetProductId(payload));
           dispatch(resetBrandId());
           dispatch(resetCountryId());
           dispatch(resetRamId());

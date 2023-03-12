@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { USER_LOGIN_URL } from "../../api";
+import { USER_LOGIN_URL } from "../../../api";
 ///////////
 const initialState = {
   user: {},
@@ -9,7 +9,7 @@ const initialState = {
 };
 ///////////
 export const loginUser = createAsyncThunk(
-  "auth/registerUser",
+  "authorization/registerUser",
   async (values, { rejectWithValue }) => {
     try {
       const user = await axios.post(USER_LOGIN_URL, values);
@@ -20,8 +20,8 @@ export const loginUser = createAsyncThunk(
   }
 );
 ///////////
-const authSlice = createSlice({
-  name: "auth",
+const authorizationSlice = createSlice({
+  name: "authorization",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -42,4 +42,4 @@ const authSlice = createSlice({
   },
 });
 ///////////
-export default authSlice.reducer;
+export default authorizationSlice.reducer;

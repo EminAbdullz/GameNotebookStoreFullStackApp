@@ -20,9 +20,7 @@ import Users from "./pages/Users";
 import "./generalStyles.scss";
 
 function App() {
-  const { user } = useSelector((state) => state.auth);
-
-  ////////////////
+  const { user } = useSelector((state) => state.authorization);
 
   const { isAdmin = null } = user;
 
@@ -30,7 +28,6 @@ function App() {
   useApi(asyncThunkToGetCountries(COUNTRIES_URL));
   useApi(asyncThunkToGetRams(RAMS_URL));
 
-  ////////////////
   return (
     <div className="App">
       <Router>

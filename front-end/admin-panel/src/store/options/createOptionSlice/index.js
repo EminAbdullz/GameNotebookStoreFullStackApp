@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createOptionRequest } from "../../../services/options";
 
 const initialState = {
-  createdOption: {},
   loading: false,
   error: null,
 };
@@ -25,10 +24,9 @@ const createOptionSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(asyncThunkForCreateOption.fulfilled, (state, { payload }) => {
+      .addCase(asyncThunkForCreateOption.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
-        state.createdBrand = { ...payload };
       })
       .addCase(asyncThunkForCreateOption.rejected, (state, { error }) => {
         state.loading = false;

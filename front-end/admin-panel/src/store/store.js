@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./authSlice";
+import authorizationSlice from "./authentication/authorization";
 import productsSlice from "./products/productsSlice";
 import productPropertiesSlice from "./products/productPropertiesSlice";
 import createProductSlice from "./products/createProductSlice";
@@ -9,10 +9,13 @@ import optionsSlice from "./options/optionsSlice";
 import createOptionSlice from "./options/createOptionSlice";
 import optionPropertiesSlice from "./options/optionsProperties";
 import deleteOptionSlice from "./options/deleteOptionSlice";
+import updateOptionSlice from "./options/updateOptionSlice";
+import usersSlice from "./authentication/usersSlice";
 
 const store = configureStore({
   reducer: {
-    auth: authSlice,
+    authorization: authorizationSlice,
+    users: usersSlice,
     /////
     products: productsSlice,
     createProduct: createProductSlice,
@@ -22,6 +25,7 @@ const store = configureStore({
     /////
     options: optionsSlice,
     createOption: createOptionSlice,
+    updateOption: updateOptionSlice,
     deleteOption: deleteOptionSlice,
     optionProperties: optionPropertiesSlice,
     /////

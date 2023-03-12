@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
@@ -12,17 +12,24 @@ function Button({ id, children, url }) {
 
   const location = useLocation();
 
-  const { asyncUpdateProducts = Function.prototype } = useUpdateDataBase();
-  const { getProductId = Function.prototype } = productPropertiesAction;
+  const { asyncUpdateProducts } = useUpdateDataBase();
+  const { getProductId } = productPropertiesAction;
 
   const onHandleClick = (e) => {
-    if (location.pathname === "/" || location.pathname === "/create") {
+    // Transition between pages for working with products
+    if (location.pathname === "/") {
       dispatch(getProductId(id));
     }
-    if (location.pathname === "/delete" && e.target.innerText === "Delete") {
-      asyncUpdateProducts();
+    if (
+      location.pathname === "/create" &&
+      (e.target.innerText === "Update" || e.target.innerText === "Delete")
+    ) {
+      dispatch(getProductId(id));
     }
-
+    // Product and Option Deleting Logic
+    if (location.pathname === "/delete" && e.target.innerText === "Delete") {
+      asyncUpdateProducts(id);
+    }
     if (location.pathname === "/options" && e.target.innerText === "Delete") {
       if (id === "") {
         toast.error("Invalid id");

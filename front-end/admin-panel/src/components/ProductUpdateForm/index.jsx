@@ -18,8 +18,8 @@ function ProductUpdateForm() {
   const { productId } = useSelector((state) => state.productProperties);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { setBestseller, setPremium, setAvailable } = productPropertiesAction;
   const { asyncUpdateProducts } = useUpdateDataBase();
@@ -51,16 +51,12 @@ function ProductUpdateForm() {
     ) {
       toast.error(`Invalid values !!`, { position: "top-right" });
     } else {
-      // setTimeout(() => {
-      //   navigate("/");
-      // }, 500);
-      // asyncUpdateProducts(formData);
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+      asyncUpdateProducts(formData);
     }
   };
-
-
-  console.log(productId);
-
 
   /////
   return (
@@ -117,7 +113,11 @@ function ProductUpdateForm() {
         <div className={styles.icon}>
           <UpdateIcon />
         </div>
-        {location.pathname === "/create" ? "Create" : location.pathname === "/update" ? "Update" : null}
+        {location.pathname === "/create"
+          ? "Create"
+          : location.pathname === "/update"
+          ? "Update"
+          : null}
       </Button>
     </form>
   );

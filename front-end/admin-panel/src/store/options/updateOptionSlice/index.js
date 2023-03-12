@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { updateOptionRequest } from "../../../services/options";
 
 const initialState = {
-  updatedOption: {},
   loading: false,
   error: null,
 };
@@ -25,10 +24,9 @@ const updateOptionSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(asyncThunkForUpdateOption.fulfilled, (state, { payload }) => {
+      .addCase(asyncThunkForUpdateOption.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
-        state.createdBrand = { ...payload };
       })
       .addCase(asyncThunkForUpdateOption.rejected, (state, { error }) => {
         state.loading = false;

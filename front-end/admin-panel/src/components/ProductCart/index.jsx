@@ -8,18 +8,6 @@ import Button from "../Button";
 function ProductCart(props) {
   const location = useLocation();
 
-  const style = () => {
-    if (location.pathname === "/") {
-      return styles.productCardHome;
-    }
-    if (location.pathname === "/create" || location.pathname === "/delete") {
-      return styles.productCard;
-    }
-    if (location.pathname === "/update") {
-      return styles.productCardUpdate;
-    }
-  };
-
   const {
     imageUrl,
     id,
@@ -34,6 +22,18 @@ function ProductCart(props) {
     stockDate,
     price,
   } = props;
+
+  const style = () => {
+    if (location.pathname === "/") {
+      return styles.productCardHome;
+    }
+    if (location.pathname === "/create" || location.pathname === "/delete") {
+      return styles.productCard;
+    }
+    if (location.pathname === "/update") {
+      return styles.productCardUpdate;
+    }
+  };
 
   return (
     <div className={style()}>
