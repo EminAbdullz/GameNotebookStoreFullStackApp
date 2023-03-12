@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import ProductCart from "../components/ProductCart";
+import ProductCard from "../components/ProductCard";
 import useGetProductByLocation from "./useGetProductByLocation";
 
 function useScreenProducts() {
@@ -9,7 +9,7 @@ function useScreenProducts() {
   ///////////////////
   return useMemo(() => {
     return productByLocation().map((item) => (
-      <ProductCart key={item.id} {...item} />
+      <ProductCard key={item.id} {...item} />
     ));
   }, [productByLocation]);
 }

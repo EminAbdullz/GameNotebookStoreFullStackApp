@@ -1,0 +1,11 @@
+@use "../../../generalStyles.scss";
+
+.usersCard {
+    @extend .productCard;
+    width: 21%;
+    height: 60vh;
+    & > .wrapper {
+        height: 80%;
+    }
+    
+}

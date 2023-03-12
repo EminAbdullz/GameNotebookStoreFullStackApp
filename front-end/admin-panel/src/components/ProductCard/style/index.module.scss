@@ -1,0 +1,17 @@
+@use "../../../generalStyles.scss";
+
+.productCardHome {
+    @extend .productCard;
+    width: 21%;
+}
+.productCard {
+    @extend .productCard;
+}
+.productCardUpdate {
+    @extend .productCard;
+    & > .buttons {
+        & > button:first-child {
+            display: none;
+        }
+    }
+}

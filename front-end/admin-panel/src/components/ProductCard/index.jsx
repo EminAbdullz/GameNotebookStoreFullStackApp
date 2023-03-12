@@ -5,7 +5,7 @@ import { UpdateIcon } from "../../icons/update";
 import { DeleteIcon } from "../../icons/delete";
 import Button from "../Button";
 
-function ProductCart(props) {
+function ProductCard(props) {
   const location = useLocation();
 
   const {
@@ -37,18 +37,20 @@ function ProductCart(props) {
 
   return (
     <div className={style()}>
-      <img src={imageUrl} alt="Notebook" />
-      <p>ID : {id}</p>
-      <p>Title - {title}</p>
-      <p>Brand - {brand}</p>
-      <p>Desription - {description}</p>
-      <p>Ram - {ram}</p>
-      <p>Country - {country}</p>
-      <p>Best Seller - {bestSeller.toString()}</p>
-      <p>Aviable - {available.toString()}</p>
-      <p>Primium: - {premium.toString()}</p>
-      <p>Creating Date: - {moment(stockDate).format("DD/MM/YYYY")}</p>
-      <p>Price - {price}$</p>
+      <div className={styles.wrapper}>
+        <img src={imageUrl} alt="Notebook" />
+        <p>ID : {id}</p>
+        <p>Title - {title}</p>
+        <p>Brand - {brand}</p>
+        <p>Desription - {description}</p>
+        <p>Ram - {ram}</p>
+        <p>Country - {country}</p>
+        <p>Best Seller - {bestSeller.toString()}</p>
+        <p>Aviable - {available.toString()}</p>
+        <p>Primium: - {premium.toString()}</p>
+        <p>Creating Date: - {moment(stockDate).format("DD/MM/YYYY")}</p>
+        <p>Price - {price}$</p>
+      </div>
       <div className={styles.buttons}>
         <Button id={id}>
           <div className={styles.icon}>
@@ -67,4 +69,4 @@ function ProductCart(props) {
   );
 }
 
-export default ProductCart;
+export default ProductCard;

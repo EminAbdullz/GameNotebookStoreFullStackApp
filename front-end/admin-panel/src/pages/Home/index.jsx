@@ -15,7 +15,6 @@ function Home() {
 
   return (
     <div className={styles.home}>
-
       {loading === true ? <Loader /> : null}
       <Link to={"/create"}>
         <TextByLocation />

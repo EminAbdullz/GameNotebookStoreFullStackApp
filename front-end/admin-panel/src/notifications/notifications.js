@@ -33,3 +33,21 @@ export const notificationAfterUpdating = () => {
     timer: 1500,
   });
 };
+
+export const notificationAfterBlock = () => {
+  Swal.fire({
+    icon: "success",
+    title: "User is blocked",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export const notificationAfterDeploy = () => {
+  Swal.fire({
+    icon: "success",
+    title: "The user is deployed.",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};

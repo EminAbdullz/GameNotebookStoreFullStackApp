@@ -24,9 +24,6 @@ function TextByLocation() {
     return <p className={styles.paragraf}> No Products updated yet. </p>;
   }
   //////
-  if (location.pathname === "/delete" && productId === "") {
-    return <p className={styles.paragraf}> No Products updated yet. </p>;
-  }
 }
 
 export default TextByLocation;

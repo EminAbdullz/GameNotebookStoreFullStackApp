@@ -22,6 +22,11 @@ const optionPropertiesSlice = createSlice({
     getCountryId: (state, { payload }) => {
       state.countryId = payload;
     },
+    resetOptionsId: (state) => {
+      state.brandId = "";
+      state.countryId = "";
+      state.ramId = "";
+    },
     getOptionCountryId: (state, { payload }) => {
       state.optionCountryId = payload;
     },

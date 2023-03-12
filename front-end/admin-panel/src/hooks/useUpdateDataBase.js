@@ -6,7 +6,13 @@ import {
   notificationAfterCreating,
   notificationAfterUpdating,
 } from "../notifications/notifications";
+import {
+  asyncThunkForBlockUser,
+  asyncThunkForUpdateUser,
+} from "../store/authentication/blockUserSlice";
+import { asyncThunkForCreateOption } from "../store/options/createOptionSlice";
 import { optionPropertiesActions } from "../store/options/optionsProperties";
+import { asyncThunkForUpdateOption } from "../store/options/updateOptionSlice";
 import {
   asyncThunkForCreateProduct,
   createProductAction,
@@ -22,7 +28,7 @@ function useUpdateDataBase() {
 
   const { resetProductId } = productPropertiesAction;
   const { resetCreatedProduct } = createProductAction;
-  const { resetBrandId, resetCountryId, resetRamId } = optionPropertiesActions;
+  const { resetOptionsId } = optionPropertiesActions;
 
   const asyncUpdateProducts = (payload) => {
     if (location.pathname === "/create") {
@@ -38,17 +44,28 @@ function useUpdateDataBase() {
         dispatch(asyncThunkForDeleteProduct(payload));
         setTimeout(() => {
           navigate("/");
-          dispatch(resetProductId(payload));
-          dispatch(resetBrandId());
-          dispatch(resetCountryId());
-          dispatch(resetRamId());
+          dispatch(resetProductId());
           dispatch(resetCreatedProduct());
+          dispatch(resetOptionsId());
         }, 500);
       });
     }
   };
 
-  return { asyncUpdateProducts };
+  const asyncUpdateUsers = (id, url) => {
+    const formData = new FormData();
+    formData.append("Id", id);
+    if (!formData.get("Id")) {
+      toast.error("Invalid Id");
+      return;
+    }
+    dispatch(asyncThunkForUpdateUser({ url, formData }));
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
+  return { asyncUpdateProducts, asyncUpdateUsers };
 }
 
 export default useUpdateDataBase;

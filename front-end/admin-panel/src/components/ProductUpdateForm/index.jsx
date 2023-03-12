@@ -50,6 +50,7 @@ function ProductUpdateForm() {
       !formData.get("RamId")
     ) {
       toast.error(`Invalid values !!`, { position: "top-right" });
+      return;
     } else {
       setTimeout(() => {
         navigate("/");

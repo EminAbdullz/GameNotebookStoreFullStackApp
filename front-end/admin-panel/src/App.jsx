@@ -18,6 +18,7 @@ import {
 import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "./api";
 import Users from "./pages/Users";
 import "./generalStyles.scss";
+import More from "./pages/More";
 
 function App() {
   const { user } = useSelector((state) => state.authorization);
@@ -41,6 +42,7 @@ function App() {
             <Route path="/delete" element={<DeleteProduct />} />
             <Route path="/options" element={<Options />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/more" element={<More />} />
           </Routes>
         </div>
         <Footer />

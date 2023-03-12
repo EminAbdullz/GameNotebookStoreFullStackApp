@@ -11,11 +11,13 @@ import optionPropertiesSlice from "./options/optionsProperties";
 import deleteOptionSlice from "./options/deleteOptionSlice";
 import updateOptionSlice from "./options/updateOptionSlice";
 import usersSlice from "./authentication/usersSlice";
+import updateUserSlice from "./authentication/blockUserSlice";
 
 const store = configureStore({
   reducer: {
     authorization: authorizationSlice,
     users: usersSlice,
+    updateUser: updateUserSlice,
     /////
     products: productsSlice,
     createProduct: createProductSlice,

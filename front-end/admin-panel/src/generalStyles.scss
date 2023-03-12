@@ -87,6 +87,7 @@ $borderRadius: 25px;
   background-color: $blue;
   padding: 10px;
   p {
+    word-wrap: break-word;
     font-weight: 600;
     transition: $transition;
     font-size: 1rem;
@@ -108,6 +109,14 @@ $borderRadius: 25px;
     & button:last-child {
       @extend .styledDeleteButton;
     }
+  }
+  & > .wrapper > p:nth-child(2),
+  & > .wrapper > p:nth-child(5),
+  & > .wrapper > p:nth-child(8),
+  & > .wrapper > p:nth-child(9),
+  & > .wrapper > p:nth-child(10),
+  & > .wrapper > p:nth-child(11) {
+    display: none;
   }
 }
 .App {

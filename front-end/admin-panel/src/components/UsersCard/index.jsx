@@ -1,5 +1,8 @@
 import moment from "moment";
-import React from "react";
+import { USER_BLOCK_URL, USER_DEPLOY_URL } from "../../api";
+import { BlockIcon, DeployIcon } from "../../icons/icons";
+import Button from "../Button";
+import styles from "./style/index.module.scss";
 
 function UsersCard(props) {
   const {
@@ -14,51 +17,43 @@ function UsersCard(props) {
     isAdmin,
     isBlocked,
   } = props;
+
   return (
-    <div>
-      <p>Id - {id}.</p>
-      <p>Name - {name}.</p>
-      <p>Surname - {surname}.</p>
-      <p>Login - {login}.</p>
-      <p>Password - {password}.</p>
-      <p>Birthday date - {moment(birthDate).format("DD/MM/YYYY")}.</p>
-      <p>Email adress - {email}.</p>
-      <p>Phone number - {phone}.</p>
-      <p>Is blocked - {isBlocked.toString()}.</p>
-      <p>Is Admin - {isAdmin.toString()}.</p>
+    <div className={styles.usersCard}>
+      <div className={styles.wrapper}>
+        <p>Name - {name}.</p>
+        <p>Surname - {surname}.</p>
+        <p>Login - {login}.</p>
+        <p>Email adress - {email}.</p>
+        <p>Is blocked - {isBlocked.toString()}.</p>
+        <p>Is Admin - {isAdmin.toString()}.</p>
+      </div>
+      <div className={styles.buttons}>
+        <Button
+          id={id}
+          isAdmin={isAdmin}
+          isBlocked={isBlocked}
+          url={USER_DEPLOY_URL}
+        >
+          <div className={styles.icon}>
+            <DeployIcon />
+          </div>
+          Deploy
+        </Button>
+        <Button
+          id={id}
+          isAdmin={isAdmin}
+          isBlocked={isBlocked}
+          url={USER_BLOCK_URL}
+        >
+          <div className={styles.icon}>
+            <BlockIcon />
+          </div>
+          Block
+        </Button>
+      </div>
     </div>
   );
 }
 
 export default UsersCard;
-
-// birthDate
-// :
-// "1999-12-31T00:00:00"
-// email
-// :
-// "eminadbullz@gmail.com"
-// id
-// :
-// 1
-// isAdmin
-// :
-// true
-// isBlocked
-// :
-// false
-// login
-// :
-// "Eminabdullz"
-// name
-// :
-// "Emin"
-// password
-// :
-// "f50bd140"
-// phone
-// :
-// "+994-51-602-01-91"
-// surname
-// :
-// "Abdullazada"

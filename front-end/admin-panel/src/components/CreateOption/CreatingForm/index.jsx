@@ -28,6 +28,7 @@ function CreatingForm() {
 
     if (!formData.get("Name") || !formData.get("Property")) {
       toast.error("Invalid data");
+      return;
     } else {
       const data = { url, formData };
       dispatch(asyncThunkForCreateOption(data));

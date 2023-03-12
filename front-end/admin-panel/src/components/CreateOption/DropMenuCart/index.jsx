@@ -26,6 +26,7 @@ function DropMenuCart(props) {
       !formData.get("Property")
     ) {
       toast.error("Invalid data");
+      return;
     } else {
       const data = { url, formData };
       dispatch(asyncThunkForUpdateOption(data));
