@@ -1,25 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { toast } from "react-toastify";
 import { USER_LOGIN_URL } from "../../../api";
-///////////
+import { authorizationRequest } from "../../../services/authentication";
+
 const initialState = {
   user: {},
+  isAdmin: null,
   loading: false,
   error: null,
 };
-///////////
+
 export const loginUser = createAsyncThunk(
   "authorization/registerUser",
-  async (values, { rejectWithValue }) => {
-    try {
-      const user = await axios.post(USER_LOGIN_URL, values);
-      return user?.data;
-    } catch (error) {
-      return rejectWithValue("wrong");
-    }
+  async (payload) => {
+    return await authorizationRequest(USER_LOGIN_URL, payload);
   }
 );
-///////////
+
 const authorizationSlice = createSlice({
   name: "authorization",
   initialState,
@@ -34,6 +31,10 @@ const authorizationSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.user = { ...payload };
+        if (payload) state.isAdmin = state.user?.isAdmin;
+        if (state.isAdmin === false) {
+          toast.error("Only admin can enter.");
+        }
       })
       .addCase(loginUser.rejected, (state, { error }) => {
         state.loading = false;
@@ -41,5 +42,5 @@ const authorizationSlice = createSlice({
       });
   },
 });
-///////////
+
 export default authorizationSlice.reducer;

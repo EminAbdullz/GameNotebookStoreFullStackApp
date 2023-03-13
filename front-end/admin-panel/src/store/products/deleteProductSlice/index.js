@@ -10,10 +10,7 @@ const initialState = {
 ////////////
 export const asyncThunkForDeleteProduct = createAsyncThunk(
   "delete-product/asyncThunkForDeleteProduct",
-  async (id = "") => {
-    const response = await deleteProductRequest(PRODUCTS_URL + id);
-    return response;
-  }
+  async (id = "") => void (await deleteProductRequest(PRODUCTS_URL + id))
 );
 ///////////
 export const deletedProductSlice = createSlice({

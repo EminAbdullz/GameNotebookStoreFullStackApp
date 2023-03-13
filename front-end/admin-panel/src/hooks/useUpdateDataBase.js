@@ -42,7 +42,7 @@ function useUpdateDataBase() {
           dispatch(resetProductId());
           dispatch(resetCreatedProduct());
           dispatch(resetOptionsId());
-        }, 500);
+        }, 1000);
       });
     }
   };

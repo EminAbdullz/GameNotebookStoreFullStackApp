@@ -6,6 +6,8 @@ import { TiEdit } from "react-icons/ti";
 import { FaTrash } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSyncAlt } from "react-icons/fa";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import { FaSignOutAlt } from 'react-icons/fa';
 
 export const BlockIcon = () => <FaLock />;
 export const DeployIcon = () => <FaUnlock />;
@@ -14,4 +16,5 @@ export const AdminIcon = () => <FaUserShield />;
 export const CreateIcon = () => <TiEdit />;
 export const DeleteIcon = () => <FaTrash />;
 export const LogInIcon = () => <FaSignInAlt />;
+export const LogOutIcon = () => <FaSignOutAlt />;
 export const UpdateIcon = () => <FaSyncAlt />;

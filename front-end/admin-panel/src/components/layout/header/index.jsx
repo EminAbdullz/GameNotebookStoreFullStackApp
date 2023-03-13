@@ -1,5 +1,6 @@
 import React from "react";
-import { AdminIcon, LogInIcon } from "../../../icons/icons";
+import { AdminIcon, LogOutIcon } from "../../../icons/icons";
+import { notificationAfterLogOut } from "../../../notifications/notifications";
 import Navigation from "../../Navigation";
 import styles from "./style/index.module.scss";
 
@@ -10,9 +11,9 @@ function Header() {
         <AdminIcon />
       </div>
       <Navigation />
-      <div className={styles.icon}>
-        <LogInIcon />
-      </div>
+      <button className={styles.icon} onClick={() => notificationAfterLogOut()}>
+        <LogOutIcon />
+      </button>
     </header>
   );
 }

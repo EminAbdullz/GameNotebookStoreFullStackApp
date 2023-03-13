@@ -51,3 +51,30 @@ export const notificationAfterDeploy = () => {
     timer: 1500,
   });
 };
+
+export const notificationAfterLoginIn = () => {
+  Swal.fire({
+    icon: "success",
+    title: "Authorized",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+export const notificationAfterLogOut = () => {
+  Swal.fire({
+    title: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Log out",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Logged out", "", "success");
+      localStorage.removeItem("admin");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  });
+};
