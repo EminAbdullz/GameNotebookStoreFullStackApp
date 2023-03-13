@@ -32,7 +32,7 @@ $borderRadius: 25px;
   transition: $transition;
   &:hover {
     color: $green;
-    a {
+    button {
       color: $green;
     }
     background-color: $whiteSmoke;
@@ -53,39 +53,133 @@ $borderRadius: 25px;
 }
 .styledDeleteButton {
   @extend %displayDirectionRow;
-  justify-content: space-around;
-  background-color: $maroon;
+  justify-content: space-between;
   border: 1px solid $maroon;
+  border-radius: $borderRadius;
+  background-color: $maroon;
   color: $whiteSmoke;
-  .icon {
-    color: $maroon;
-  }
+  cursor: pointer;
+  transition: $transition;
   &:hover {
-    background-color: $whiteSmoke;
     color: $maroon;
-    a {
+    button {
       color: $maroon;
     }
+    background-color: $whiteSmoke;
     .icon {
-      color: $whiteSmoke;
       background-color: $maroon;
+      color: $whiteSmoke;
     }
   }
   .icon {
     @extend %displayDirectionRow;
-    transition: $transition;
-    background-color: $whiteSmoke;
-    height: 30px;
     width: 30px;
+    height: 30px;
     border-radius: $borderRadius;
+    background-color: $whiteSmoke;
+    color: $maroon;
+    transition: $transition;
   }
 }
+.styledMoreButton {
+  @extend %displayDirectionRow;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid $darkBlue;
+  border-radius: $borderRadius;
+  background-color: $darkBlue;
+  color: $whiteSmoke;
+  cursor: pointer;
+  transition: $transition;
+  &:hover {
+    color: $darkBlue;
+    button {
+      color: $darkBlue;
+    }
+    background-color: $whiteSmoke;
+    .icon {
+      background-color: $darkBlue;
+      color: $whiteSmoke;
+    }
+  }
+  .icon {
+    @extend %displayDirectionRow;
+    width: 30px;
+    height: 30px;
+    border-radius: $borderRadius;
+    background-color: $whiteSmoke;
+    color: $green;
+    transition: $transition;
+  }
+}
+
 .productCard {
   width: 50%;
   color: $black;
   border-radius: $borderRadius;
   background-color: $blue;
   padding: 10px;
+  & > p:nth-child(2),
+  & > p:nth-child(5),
+  & > p:nth-child(8),
+  & > p:nth-child(9),
+  & > p:nth-child(10),
+  & > p:nth-child(11) {
+    display: none;
+  }
+  p {
+    word-wrap: break-word;
+    font-weight: 600;
+    transition: $transition;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      color: $orange;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  & > .buttons {
+    @extend %displayDirectionRow;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    & > a:first-child {
+      text-decoration: none;
+      & > button {
+        @extend .styledUpdateButton;
+      }
+    }
+    & > a:last-child {
+      text-decoration: none;
+      & > button {
+        @extend .styledDeleteButton;
+      }
+    }
+  }
+  & > .more {
+    margin-top: 10px;
+    & > a {
+      @extend %displayDirectionRow;
+      text-decoration: none;
+      & > button {
+        @extend .styledMoreButton;
+      }
+    }
+  }
+}
+.userCard {
+  width: 50%;
+  color: $black;
+  border-radius: $borderRadius;
+  background-color: $blue;
+  padding: 10px;
+  & > p:nth-child(3),
+  & > p:nth-child(5),
+  & > p:nth-child(6),
+  & > p:nth-child(7) {
+    display: none;
+  }
   p {
     word-wrap: break-word;
     font-weight: 600;
@@ -110,13 +204,15 @@ $borderRadius: 25px;
       @extend .styledDeleteButton;
     }
   }
-  & > .wrapper > p:nth-child(2),
-  & > .wrapper > p:nth-child(5),
-  & > .wrapper > p:nth-child(8),
-  & > .wrapper > p:nth-child(9),
-  & > .wrapper > p:nth-child(10),
-  & > .wrapper > p:nth-child(11) {
-    display: none;
+  & > .more {
+    margin-top: 10px;
+    & > a {
+      @extend %displayDirectionRow;
+      text-decoration: none;
+      & > button {
+        @extend .styledMoreButton;
+      }
+    }
   }
 }
 .App {

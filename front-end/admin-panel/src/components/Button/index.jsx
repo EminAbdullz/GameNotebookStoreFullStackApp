@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
@@ -7,6 +7,7 @@ import {
   notificationAfterDeleting,
   notificationAfterDeploy,
 } from "../../notifications/notifications";
+import { usersActions } from "../../store/authentication/usersSlice";
 import { asyncThunkForDeleteOption } from "../../store/options/deleteOptionSlice";
 import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
 import styles from "./style/index.module.scss";
@@ -18,6 +19,7 @@ function Button({ id, children, url, isAdmin, isBlocked }) {
 
   const { asyncUpdateProducts, asyncUpdateUsers } = useUpdateDataBase(); // custom hook for with async logics
   const { getProductId } = productPropertiesAction; // action to get product id
+  const { getUserId } = usersActions;
 
   const onHandleClick = (e) => {
     //* Transition between pages for working with products
@@ -87,6 +89,17 @@ function Button({ id, children, url, isAdmin, isBlocked }) {
       if (!isBlocked) {
         toast.error("User already deployed.");
       }
+    }
+
+    //* Get more info about product or user
+
+    // button get id and depending on conditions find object with same id in users or products
+    if (e.target.innerText === "More") {
+      if (location.pathname === "/users") {
+        dispatch(getUserId(id));
+        
+      }
+      dispatch(getProductId(id));
     }
   };
 

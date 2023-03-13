@@ -6,13 +6,8 @@ import {
   notificationAfterCreating,
   notificationAfterUpdating,
 } from "../notifications/notifications";
-import {
-  asyncThunkForBlockUser,
-  asyncThunkForUpdateUser,
-} from "../store/authentication/blockUserSlice";
-import { asyncThunkForCreateOption } from "../store/options/createOptionSlice";
+import { asyncThunkForUpdateUser } from "../store/authentication/blockUserSlice";
 import { optionPropertiesActions } from "../store/options/optionsProperties";
-import { asyncThunkForUpdateOption } from "../store/options/updateOptionSlice";
 import {
   asyncThunkForCreateProduct,
   createProductAction,

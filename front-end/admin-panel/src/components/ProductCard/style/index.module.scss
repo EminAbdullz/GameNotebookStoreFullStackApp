@@ -10,8 +10,22 @@
 .productCardUpdate {
     @extend .productCard;
     & > .buttons {
-        & > button:first-child {
+        & > a:first-child {
             display: none;
         }
+    }
+}
+.productCardMore {
+    @extend .productCard;
+    & > .more {
+        display: none;
+    }
+    & > p:nth-child(2),
+    & > p:nth-child(5),
+    & > p:nth-child(8),
+    & > p:nth-child(9),
+    & > p:nth-child(10),
+    & > p:nth-child(11) {
+        display: block;
     }
 }

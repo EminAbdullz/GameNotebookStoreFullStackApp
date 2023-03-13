@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import moment from "moment";
 import styles from "./style/index.module.scss";
-import { UpdateIcon } from "../../icons/update";
-import { DeleteIcon } from "../../icons/delete";
 import Button from "../Button";
+import { DeleteIcon, MoreIcon, UpdateIcon } from "../../icons/icons";
 
 function ProductCard(props) {
   const location = useLocation();
@@ -33,11 +32,13 @@ function ProductCard(props) {
     if (location.pathname === "/update") {
       return styles.productCardUpdate;
     }
+    if (location.pathname === "/more/product") {
+      return styles.productCardMore;
+    }
   };
 
   return (
     <div className={style()}>
-      <div className={styles.wrapper}>
         <img src={imageUrl} alt="Notebook" />
         <p>ID : {id}</p>
         <p>Title - {title}</p>
@@ -50,20 +51,33 @@ function ProductCard(props) {
         <p>Primium: - {premium.toString()}</p>
         <p>Creating Date: - {moment(stockDate).format("DD/MM/YYYY")}</p>
         <p>Price - {price}$</p>
-      </div>
       <div className={styles.buttons}>
-        <Button id={id}>
-          <div className={styles.icon}>
-            <UpdateIcon />
-          </div>
-          <Link to={"/update"}>Update</Link>
-        </Button>
-        <Button id={id}>
-          <div className={styles.icon}>
-            <DeleteIcon />
-          </div>
-          <Link to={"/delete"}>Delete</Link>
-        </Button>
+        <Link to={"/update"}>
+          <Button id={id}>
+            <div className={styles.icon}>
+              <UpdateIcon />
+            </div>
+            Update
+          </Button>
+        </Link>
+        <Link to={"/delete"}>
+          <Button id={id}>
+            <div className={styles.icon}>
+              <DeleteIcon />
+            </div>
+            Delete
+          </Button>
+        </Link>
+      </div>
+      <div className={styles.more}>
+        <Link to={"/more/product"}>
+          <Button id={id}>
+            <div className={styles.icon}>
+              <MoreIcon />
+            </div>
+            More
+          </Button>
+        </Link>
       </div>
     </div>
   );

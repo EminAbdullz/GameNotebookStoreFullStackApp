@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { DeleteIcon } from "../../../icons/delete";
+import { DeleteIcon } from "../../../icons/icons";
 import { notificationAfterUpdating } from "../../../notifications/notifications";
 import { asyncThunkForUpdateOption } from "../../../store/options/updateOptionSlice";
 import Button from "../../Button";

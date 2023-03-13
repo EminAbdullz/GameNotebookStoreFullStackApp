@@ -1,6 +1,7 @@
 import moment from "moment";
+import { Link, useLocation } from "react-router-dom";
 import { USER_BLOCK_URL, USER_DEPLOY_URL } from "../../api";
-import { BlockIcon, DeployIcon } from "../../icons/icons";
+import { BlockIcon, DeployIcon, MoreIcon } from "../../icons/icons";
 import Button from "../Button";
 import styles from "./style/index.module.scss";
 
@@ -18,16 +19,29 @@ function UsersCard(props) {
     isBlocked,
   } = props;
 
+  const location = useLocation();
+
+  const style = () => {
+    if (location.pathname === "/users") {
+      return styles.usersCard;
+    }
+    if (location.pathname === "/more/user") {
+      return styles.userCardMore;
+    }
+  };
+
   return (
-    <div className={styles.usersCard}>
-      <div className={styles.wrapper}>
-        <p>Name - {name}.</p>
-        <p>Surname - {surname}.</p>
-        <p>Login - {login}.</p>
-        <p>Email adress - {email}.</p>
-        <p>Is blocked - {isBlocked.toString()}.</p>
-        <p>Is Admin - {isAdmin.toString()}.</p>
-      </div>
+    <div className={style()}>
+      <p>Name - {name}.</p>
+      <p>Surname - {surname}.</p>
+      <p>Birthday date - {moment(birthDate).format("DD/MM/YYYY")}.</p>
+      <p>Login - {login}.</p>
+      <p>Password - {password}</p>
+      <p>Phone number - {phone}</p>
+      <p>Email adress - {email}.</p>
+      <p>Is blocked - {isBlocked.toString()}.</p>
+      <p>Is Admin - {isAdmin.toString()}</p>
+      <p></p>
       <div className={styles.buttons}>
         <Button
           id={id}
@@ -51,6 +65,16 @@ function UsersCard(props) {
           </div>
           Block
         </Button>
+      </div>
+      <div className={styles.more}>
+        <Link to={"/more/user"}>
+          <Button id={id}>
+            <div className={styles.icon}>
+              <MoreIcon />
+            </div>
+            More
+          </Button>
+        </Link>
       </div>
     </div>
   );

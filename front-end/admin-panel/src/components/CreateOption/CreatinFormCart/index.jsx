@@ -1,4 +1,4 @@
-import { UpdateIcon } from "../../../icons/update";
+import { UpdateIcon } from "../../../icons/icons";
 import Button from "../../Button";
 import styles from "./style/index.module.scss";
 

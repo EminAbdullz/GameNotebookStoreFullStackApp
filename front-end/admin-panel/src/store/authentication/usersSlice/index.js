@@ -4,6 +4,7 @@ import { baseRequest } from "../../../services/base";
 
 const initialState = {
   users: [],
+  userId: "",
   loading: false,
   error: null,
 };
@@ -19,7 +20,11 @@ export const asyncThunkToGetUsers = createAsyncThunk(
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    getUserId: (state, { payload }) => {
+      state.userId = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(asyncThunkToGetUsers.pending, (state) => {
@@ -37,5 +42,7 @@ const usersSlice = createSlice({
       });
   },
 });
+
+export const usersActions = usersSlice.actions;
 
 export default usersSlice.reducer;

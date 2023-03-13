@@ -1,11 +1,20 @@
 @use "../../../generalStyles.scss";
 
 .usersCard {
-    @extend .productCard;
+    @extend .userCard;
     width: 21%;
-    height: 60vh;
-    & > .wrapper {
-        height: 80%;
+}
+
+.userCardMore{
+    @extend .userCard;
+    width: 30%;
+    & > p:nth-child(3),
+    & > p:nth-child(5),
+    & > p:nth-child(6),
+    & > p:nth-child(7) {
+      display: block;
     }
-    
+    & > .more {
+        display: none;
+    }
 }

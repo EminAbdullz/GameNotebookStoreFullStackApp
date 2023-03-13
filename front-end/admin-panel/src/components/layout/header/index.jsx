@@ -1,6 +1,5 @@
 import React from "react";
-import { AdminIcon } from "../../../icons/admin";
-import { LogInIcon } from "../../../icons/logIn";
+import { AdminIcon, LogInIcon } from "../../../icons/icons";
 import Navigation from "../../Navigation";
 import styles from "./style/index.module.scss";
 

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
-import { UpdateIcon } from "../../icons/update";
+import { UpdateIcon } from "../../icons/icons";
 import { productPropertiesAction } from "../../store/products/productPropertiesSlice";
 import Button from "../Button";
 import styles from "./style/index.module.scss";

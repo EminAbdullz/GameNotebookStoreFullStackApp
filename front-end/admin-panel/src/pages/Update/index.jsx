@@ -5,8 +5,8 @@ import ProductUpdateForm from "../../components/ProductUpdateForm";
 import Loader from "../../components/Loader";
 import styles from "./style/index.module.scss";
 import TextByLocation from "../../components/TextByLocation";
-import useScreenProducts from "../../hooks/useScreenProducts";
 import { optionPropertiesActions } from "../../store/options/optionsProperties";
+import useScreen from "../../hooks/useScreen";
 ////
 function Update() {
   const dispatch = useDispatch();
@@ -14,6 +14,8 @@ function Update() {
   const { brands, countries, rams, loading } = useSelector(
     (state) => state.options
   );
+
+  const { useScreenProducts } = useScreen()
 
   const { getBrandId, getCountryId, getRamId } = optionPropertiesActions;
 
