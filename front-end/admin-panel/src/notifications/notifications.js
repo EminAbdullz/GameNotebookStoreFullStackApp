@@ -72,6 +72,7 @@ export const notificationAfterLogOut = () => {
     if (result.isConfirmed) {
       Swal.fire("Logged out", "", "success");
       localStorage.removeItem("admin");
+      sessionStorage.removeItem("admin");
       setTimeout(() => {
         window.location.reload();
       }, 1000);

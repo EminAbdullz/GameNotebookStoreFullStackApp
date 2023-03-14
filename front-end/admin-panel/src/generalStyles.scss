@@ -1,6 +1,8 @@
 // variables
 $blue: #afdbfd;
 $darkBlue: #1e2760;
+$skyBlue: #2d87d3;
+$navy: #101f36;
 $maroon: #810001;
 $whiteSmoke: #ededed;
 $orange: #c75e1a;
@@ -111,6 +113,10 @@ $borderRadius: 25px;
     color: $green;
     transition: $transition;
   }
+}
+.forPages {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .productCard {

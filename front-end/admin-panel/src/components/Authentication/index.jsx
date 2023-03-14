@@ -1,12 +1,23 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { FaKey } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { loginUser } from "../../store/authentication/authorization";
+import { LogInIcon, UserIcon } from "../../icons/icons";
+import {
+  authorizationAction,
+  loginUser,
+} from "../../store/authentication/authorization";
+import Button from "../Button";
+import styles from "./style/index.module.scss";
 ////////////////////////////
 function Authorization() {
   const dispatch = useDispatch();
 
   const formData = new FormData();
+
+  const { rememberMe } = useSelector((state) => state.authorization);
+
+  const { setRememberMe } = authorizationAction;
 
   const submit = (e) => {
     e.preventDefault();
@@ -22,11 +33,38 @@ function Authorization() {
   };
 
   return (
-    <form onSubmit={submit}>
-      <input name="login" placeholder="login" />
-      <input name="password" placeholder="password" />
-      <button type="submit">register</button>
-    </form>
+    <div className={styles.wrapper}>
+      <form onSubmit={submit} className={styles.authorization}>
+        <label htmlFor="login" className={styles.iconWrapper}>
+          <UserIcon />
+          <input
+            name="login"
+            placeholder="Login"
+            id="login"
+            autoComplete="off"
+          />
+        </label>
+        <label htmlFor="password" className={styles.iconWrapper}>
+          <FaKey />
+          <input
+            name="password"
+            placeholder="Password"
+            id="password"
+            autoComplete="off"
+          />
+        </label>
+        <div className={styles.remember}>
+          <label htmlFor="remember">Remember me</label>
+          <input
+            type="checkbox"
+            id="remember"
+            checked={rememberMe}
+            onChange={() => dispatch(setRememberMe())}
+          />
+        </div>
+        <button type="submit">LOGIN</button>
+      </form>
+    </div>
   );
 }
 ///////////

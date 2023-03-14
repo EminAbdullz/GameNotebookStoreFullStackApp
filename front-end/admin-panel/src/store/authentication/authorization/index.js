@@ -6,6 +6,7 @@ import { authorizationRequest } from "../../../services/authentication";
 const initialState = {
   user: {},
   isAdmin: null,
+  rememberMe: false,
   loading: false,
   error: null,
 };
@@ -20,7 +21,11 @@ export const loginUser = createAsyncThunk(
 const authorizationSlice = createSlice({
   name: "authorization",
   initialState,
-  reducers: {},
+  reducers: {
+    setRememberMe: (state) => {
+      state.rememberMe = !state.rememberMe;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -42,5 +47,7 @@ const authorizationSlice = createSlice({
       });
   },
 });
+
+export const authorizationAction = authorizationSlice.actions;
 
 export default authorizationSlice.reducer;

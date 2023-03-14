@@ -25,7 +25,7 @@ const updateProductSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(asyncThunkForUpdateProducts.fulfilled, (state, { payload }) => {
+      .addCase(asyncThunkForUpdateProducts.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })

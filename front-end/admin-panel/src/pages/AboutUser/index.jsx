@@ -1,15 +1,16 @@
 import React from "react";
 import Main from "../../components/layout/main";
 import useScreen from "../../hooks/useScreen";
+import styles from "./style/index.module.scss";
 
-function MoreUser() {
-  const { useScreenUsers, useScreenProducts } = useScreen();
+function AboutUser() {
+  const { useScreenUsers } = useScreen();
 
   return (
-    <div>
+    <div className={styles.aboutUser}>
       <Main>{useScreenUsers()}</Main>
     </div>
   );
 }
 
-export default MoreUser;
+export default AboutUser;

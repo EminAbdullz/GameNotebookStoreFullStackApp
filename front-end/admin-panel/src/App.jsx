@@ -18,13 +18,13 @@ import { BRANDS_URL, COUNTRIES_URL, RAMS_URL } from "./api";
 import Users from "./pages/Users";
 import "./generalStyles.scss";
 import { asyncThunkToGetUsers } from "./store/authentication/usersSlice";
-import MoreUser from "./pages/MoreUser";
-import MoreProduct from "./pages/MoreProduct";
 import { notificationAfterLoginIn } from "./notifications/notifications";
 import Authorization from "./components/Authentication";
+import AboutProduct from "./pages/AboutProduct";
+import AboutUser from "./pages/AboutUser";
 
 function App() {
-  const { isAdmin } = useSelector((state) => state.authorization);
+  const { isAdmin, rememberMe } = useSelector((state) => state.authorization);
 
   useApi(asyncThunkToGetBrands(BRANDS_URL));
   useApi(asyncThunkToGetCountries(COUNTRIES_URL));
@@ -49,14 +49,21 @@ function App() {
       );
     }
     if (isAdmin === true) {
-      localStorage.setItem("admin", true);
-      notificationAfterLoginIn();
+      if (rememberMe === false) {
+        sessionStorage.setItem("admin", true);
+        notificationAfterLoginIn();
+      }
+      if (rememberMe === true) {
+        localStorage.setItem("admin", true);
+        notificationAfterLoginIn();
+      }
     }
   }
 
   return (
     <>
-      {JSON.parse(localStorage.getItem("admin")) === true ? (
+      {JSON.parse(localStorage.getItem("admin")) === true ||
+      JSON.parse(sessionStorage.getItem("admin")) === true ? (
         <div className="App">
           <Router>
             <ToastContainer />
@@ -69,8 +76,8 @@ function App() {
                 <Route path="/delete" element={<DeleteProduct />} />
                 <Route path="/options" element={<Options />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/more/user" element={<MoreUser />} />
-                <Route path="/more/product" element={<MoreProduct />} />
+                <Route path="/more/user" element={<AboutUser />} />
+                <Route path="/more/product" element={<AboutProduct />} />
               </Routes>
             </div>
             <Footer />

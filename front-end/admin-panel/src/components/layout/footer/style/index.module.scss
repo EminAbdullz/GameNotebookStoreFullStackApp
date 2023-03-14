@@ -5,4 +5,13 @@
     height: 50px;
     width: 100%;
     margin-top: 40px;
+    @extend %displayDirectionRow;
+    color: generalStyles.$whiteSmoke;
+    & > p {
+        cursor: pointer;
+        transition: generalStyles.$transition;
+    }
+    & > p:hover {
+        color: generalStyles.$orange;
+    }
 }
