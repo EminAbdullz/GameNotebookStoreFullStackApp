@@ -10,7 +10,6 @@ $black: #000002;
 $green: #028910;
 $transition: 0.3s all ease-in-out;
 $borderRadius: 25px;
-//////
 %displayDirectionColumn {
   display: flex;
   flex-direction: column;
@@ -23,6 +22,7 @@ $borderRadius: 25px;
   justify-content: center;
 }
 /////
+/// Base styles
 .styledUpdateButton {
   @extend %displayDirectionRow;
   justify-content: space-between;
@@ -118,7 +118,6 @@ $borderRadius: 25px;
   width: 90%;
   margin: 0 auto;
 }
-
 .productCard {
   width: 50%;
   color: $black;

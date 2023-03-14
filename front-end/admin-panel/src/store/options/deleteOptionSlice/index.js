@@ -6,6 +6,7 @@ const initialState = {
   error: null,
 };
 
+// one async thunk for delete brand, ram, country
 export const asyncThunkForDeleteOption = createAsyncThunk(
   "delete-option/asyncThunkForDeleteOption",
   async ({ url, id }) => void deleteOptionRequest(url + id)

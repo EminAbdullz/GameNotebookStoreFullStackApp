@@ -36,6 +36,8 @@ const authorizationSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.user = { ...payload };
+        
+        // check if payload is not undefined
         if (payload) state.isAdmin = state.user?.isAdmin;
         if (state.isAdmin === false) {
           toast.error("Only admin can enter.");

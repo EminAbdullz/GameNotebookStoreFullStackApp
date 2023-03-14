@@ -15,7 +15,7 @@ function Update() {
     (state) => state.options
   );
 
-  const { useScreenProducts } = useScreen()
+  const { useScreenProducts } = useScreen();
 
   const { getBrandId, getCountryId, getRamId } = optionPropertiesActions;
 

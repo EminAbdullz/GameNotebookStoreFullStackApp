@@ -5,7 +5,7 @@ import useScreen from "../../hooks/useScreen";
 
 function DeleteProduct() {
   const { useScreenProducts } = useScreen();
-  ///////////
+  
   return (
     <div className={styles.delete}>
       <TextByLocation />

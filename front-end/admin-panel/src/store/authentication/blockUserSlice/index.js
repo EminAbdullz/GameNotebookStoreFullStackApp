@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
 };
 
+// to block or deploy user
 export const asyncThunkForUpdateUser = createAsyncThunk(
   "block-user/asyncThunkForUpdateUser",
   async ({ url, formData }) => void updateUserRequest(url, formData)

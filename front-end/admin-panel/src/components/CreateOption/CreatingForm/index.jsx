@@ -22,6 +22,7 @@ function CreatingForm() {
 
   const formData = new FormData();
 
+  // name and url cones from CreatingFormCart
   const onHandleCreateOption = (name, url) => {
     formData.append("Property", name);
     formData.append("Name", name);

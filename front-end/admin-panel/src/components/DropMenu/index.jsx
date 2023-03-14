@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import styles from "./style/index.module.scss";
 
-function DropMenu({ data = [], text, getId = Function.prototype }) {
-  /////////////////
+function DropMenu({ data = [], text = "", getId = Function.prototype }) {
+
   const selectOptions = useMemo(() => {
     return data.map((item) => (
       <option key={item.id} value={item.id}>
@@ -10,7 +10,7 @@ function DropMenu({ data = [], text, getId = Function.prototype }) {
       </option>
     ));
   }, [data]);
-  /////////////////
+  
   return (
     <select
       defaultValue={false}

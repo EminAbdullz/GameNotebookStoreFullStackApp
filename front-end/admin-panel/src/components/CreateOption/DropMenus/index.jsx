@@ -22,22 +22,21 @@ function DropMenus() {
   const onHandleGetRamId = (id) => void dispatch(getOptionRamId(id));
 
   const screenDropMenuCart = (options, id, text, labels, url) => {
-    if (id !== "") {
-      const brand = options.find((item) => item.id === Number(id));
-      return [brand].map((item) => (
-        <DropMenuCart 
-          className={styles.dropCartMenu}
-          {...item}
-          key={item.id}
-          text={text}
-          labels={labels}
-          id={id}
-          url={url}
-          buttonText = {"Update"}
-        />
-      ));
-    }
-    return [];
+    if (id === "") return [];
+
+    const brand = options.find((item) => item.id === Number(id));
+    return [brand].map((item) => (
+      <DropMenuCart
+        className={styles.dropCartMenu}
+        {...item}
+        key={item.id}
+        text={text}
+        labels={labels}
+        id={id}
+        url={url}
+        buttonText={"Update"}
+      />
+    ));
   };
 
   return (

@@ -21,11 +21,12 @@ function UsersCard(props) {
 
   const location = useLocation();
 
+  // styles depending on location
   const style = () => {
     if (location.pathname === "/users") {
       return styles.usersCard;
     }
-    if (location.pathname === "/more/user") {
+    if (location.pathname === "/about/user") {
       return styles.userCardMore;
     }
   };
@@ -67,7 +68,7 @@ function UsersCard(props) {
         </Button>
       </div>
       <div className={styles.more}>
-        <Link to={"/more/user"}>
+        <Link to={"/about/user"}>
           <Button id={id}>
             <div className={styles.icon}>
               <MoreIcon />

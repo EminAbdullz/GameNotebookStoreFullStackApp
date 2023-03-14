@@ -39,7 +39,7 @@ function ProductUpdateForm() {
     formData.append("BrandId", brandId);
     formData.append("CountryId", countryId);
     formData.append("RamId", ramId);
-    //////
+
     if (
       !formData.get("Title") ||
       !formData.get("Price") ||
@@ -54,12 +54,11 @@ function ProductUpdateForm() {
     } else {
       setTimeout(() => {
         navigate("/");
-      }, 500);
+      }, 1000);
       asyncUpdateProducts(formData);
     }
   };
 
-  /////
   return (
     <form onSubmit={createProduct} className={styles.updateForm}>
       <input placeholder="Title" name="title" className={styles.typeText} />

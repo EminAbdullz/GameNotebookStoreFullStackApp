@@ -31,7 +31,7 @@ const createProductSlice = createSlice({
         state.error = null;
       })
       .addCase(asyncThunkForCreateProduct.fulfilled, (state, { payload }) => {
-        state.createdProduct = [payload];
+        state.createdProduct = [payload]; // cause of custom hook which maping array
         state.loading = false;
         state.error = null;
       })

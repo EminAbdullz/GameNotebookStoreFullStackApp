@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-/////////////
+
+// flags for product properties
+
 const initialState = {
   productId: "",
   isBestseller: false,

@@ -15,22 +15,24 @@ import updateUserSlice from "./authentication/blockUserSlice";
 
 const store = configureStore({
   reducer: {
+    // auth
     authorization: authorizationSlice,
     users: usersSlice,
     updateUser: updateUserSlice,
-    /////
+
+    // products
     products: productsSlice,
     createProduct: createProductSlice,
     updateProduct: updateProductSlice,
     productProperties: productPropertiesSlice,
     deleteProduct: deleteProductSlice,
-    /////
+
+    // options
     options: optionsSlice,
     createOption: createOptionSlice,
     updateOption: updateOptionSlice,
     deleteOption: deleteOptionSlice,
     optionProperties: optionPropertiesSlice,
-    /////
   },
 });
 

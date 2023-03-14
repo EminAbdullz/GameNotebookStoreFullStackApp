@@ -11,7 +11,7 @@ function CreatingFormCart({
 }) {
   const submit = (e) => {
     e.preventDefault();
-    onHandleSubmit(e.target[properties].value, url);
+    onHandleSubmit(e.target[properties].value, url); 
   };
 
   return (

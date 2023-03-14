@@ -9,7 +9,6 @@ export const createOptionRequest = async (url = "", param = {}) => {
   }
 };
 
-/////
 
 export const updateOptionRequest = async (url = "", param = {}) => {
   try {
@@ -20,7 +19,6 @@ export const updateOptionRequest = async (url = "", param = {}) => {
   }
 };
 
-/////
 
 export const deleteOptionRequest = async (url = "", param = "") => {
   try {

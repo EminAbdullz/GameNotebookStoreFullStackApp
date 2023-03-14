@@ -1,33 +1,32 @@
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import UsersCard from "../components/UsersCard";
 
-function useGetProductByLocation() {
+//* Custom hook with  function which return data(array from async request) depending on location
+
+function useGetDataByLocation() {
   const { products } = useSelector((state) => state.products);
   const { productId } = useSelector((state) => state.productProperties);
   const { userId } = useSelector((state) => state.users);
   const { users } = useSelector((state) => state.users);
   const { createdProduct } = useSelector((state) => state.createProduct);
   const location = useLocation();
-  //////////
-  const productByLocation = () => {
+
+  const dataByLocation = () => {
     if (location.pathname === "/") return products;
     if (location.pathname === "/create") return createdProduct;
     if (location.pathname === "/users") return users;
 
-    if (
-      (location.pathname === "/update" || location.pathname === "/delete") &&
-      productId !== ""
-    ) {
+    if (location.pathname === "/update" || location.pathname === "/delete") {
+      if (productId === "") return [];
       return [products.find((item) => item.id === productId)];
     }
 
-    if (location.pathname === "/more/user") {
+    if (location.pathname === "/about/user") {
       if (userId === "") return [];
       return [users.find((item) => item.id === userId)];
     }
 
-    if (location.pathname === "/more/product") {
+    if (location.pathname === "/about/product") {
       if (productId === "") return [];
       return [products.find((item) => item.id === productId)];
     }
@@ -35,7 +34,7 @@ function useGetProductByLocation() {
     return [];
   };
 
-  return { productByLocation }; // returns array
+  return { dataByLocation }; // returns array
 }
 
-export default useGetProductByLocation;
+export default useGetDataByLocation;

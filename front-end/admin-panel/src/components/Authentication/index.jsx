@@ -2,12 +2,11 @@ import React from "react";
 import { FaKey } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { LogInIcon, UserIcon } from "../../icons/icons";
+import { UserIcon } from "../../icons/icons";
 import {
   authorizationAction,
   loginUser,
 } from "../../store/authentication/authorization";
-import Button from "../Button";
 import styles from "./style/index.module.scss";
 ////////////////////////////
 function Authorization() {

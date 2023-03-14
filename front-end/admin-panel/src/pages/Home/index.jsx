@@ -11,6 +11,7 @@ import useScreen from "../../hooks/useScreen";
 ////////////////////
 function Home() {
   const { loading } = useSelector((state) => state.products);
+  
   useApi(asyncThunkToGetProducts());
 
   const { useScreenProducts } = useScreen();

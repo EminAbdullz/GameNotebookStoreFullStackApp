@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUpdateDataBase from "../../hooks/useUpdateDataBase";
 import {
@@ -16,6 +16,7 @@ function Button({ id, children, url, isAdmin, isBlocked }) {
   const dispatch = useDispatch();
 
   const location = useLocation();
+  const navigation = useNavigate();
 
   const { asyncUpdateProducts, asyncUpdateUsers } = useUpdateDataBase(); // custom hook for with async logics
   const { getProductId } = productPropertiesAction; // action to get product id
@@ -62,42 +63,80 @@ function Button({ id, children, url, isAdmin, isBlocked }) {
     //* User block and deploy logic
 
     //Button performs different functions depending on the boolean values ​​of the parameters.
-    if (location.pathname === "/users" && e.target.innerText === "Block") {
-      if (isAdmin) {
-        toast.error("Admin cannot be blocked.");
-        return;
+    if (location.pathname === "/users") {
+      if (e.target.innerText === "Block") {
+        if (isAdmin) {
+          toast.error("Admin cannot be blocked.");
+          return;
+        }
+        if (!isAdmin && !isBlocked) {
+          asyncUpdateUsers(id, url);
+          notificationAfterBlock(isBlocked);
+          setTimeout(() => navigation("/users"), 500);
+          return;
+        }
+        if (isBlocked) {
+          toast.error("User already blocked.");
+          return;
+        }
       }
-      if (!isAdmin && !isBlocked) {
-        asyncUpdateUsers(id, url);
-        notificationAfterBlock(isBlocked);
-        return;
-      }
-      if (isBlocked) {
-        toast.error("User already blocked.");
+      if (e.target.innerText === "Deploy") {
+        if (isAdmin) {
+          toast.error("Admin cannot be deployed.");
+          return;
+        }
+        if (isBlocked) {
+          asyncUpdateUsers(id, url);
+          notificationAfterDeploy();
+          setTimeout(() => navigation("/users"), 500);
+          return;
+        }
+        if (!isBlocked) {
+          toast.error("User already deployed.");
+          return;
+        }
       }
     }
-    if (location.pathname === "/users" && e.target.innerText === "Deploy") {
-      if (isAdmin) {
-        toast.error("Admin cannot be deployed.");
-        return;
+    if (location.pathname === "/about/user") {
+      if (e.target.innerText === "Block") {
+        if (isAdmin) {
+          toast.error("Admin cannot be blocked.");
+          return;
+        }
+        if (!isAdmin && !isBlocked) {
+          asyncUpdateUsers(id, url);
+          notificationAfterBlock(isBlocked);
+          setTimeout(() => navigation("/users"), 500);
+          return;
+        }
+        if (isBlocked) {
+          toast.error("User already blocked.");
+          return;
+        }
       }
-      if (isBlocked) {
-        asyncUpdateUsers(id, url);
-        notificationAfterDeploy();
-        return;
-      }
-      if (!isBlocked) {
-        toast.error("User already deployed.");
+      if (e.target.innerText === "Deploy") {
+        if (isAdmin) {
+          toast.error("Admin cannot be deployed.");
+          return;
+        }
+        if (isBlocked) {
+          asyncUpdateUsers(id, url);
+          notificationAfterDeploy();
+          setTimeout(() => navigation("/users"), 500);
+          return;
+        }
+        if (!isBlocked) {
+          toast.error("User already deployed.");
+        }
       }
     }
-
     //* Get more info about product or user
 
     // button get id and depending on conditions find object with same id in users or products
     if (e.target.innerText === "More") {
       if (location.pathname === "/users") {
         dispatch(getUserId(id));
-        
+        return;
       }
       dispatch(getProductId(id));
     }

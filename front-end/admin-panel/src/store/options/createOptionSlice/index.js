@@ -6,6 +6,7 @@ const initialState = {
   error: null,
 };
 
+// one async thunk for creating brand, ram, country
 export const asyncThunkForCreateOption = createAsyncThunk(
   "create-option/asyncThunkForCreateOption",
   async ({ url, formData }) => {

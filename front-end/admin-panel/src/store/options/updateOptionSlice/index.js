@@ -6,6 +6,7 @@ const initialState = {
   error: null,
 };
 
+// one async thunk for updating brand, ram, country
 export const asyncThunkForUpdateOption = createAsyncThunk(
   "update-option/asyncThunkForUpdateOption",
   async ({ url, formData }) => {

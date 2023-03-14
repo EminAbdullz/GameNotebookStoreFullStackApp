@@ -16,6 +16,8 @@ import { asyncThunkForDeleteProduct } from "../store/products/deleteProductSlice
 import { productPropertiesAction } from "../store/products/productPropertiesSlice";
 import { asyncThunkForUpdateProducts } from "../store/products/updateProductSlice";
 
+//* Custom hook with 2 function
+
 function useUpdateDataBase() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ function useUpdateDataBase() {
   const { resetProductId } = productPropertiesAction;
   const { resetCreatedProduct } = createProductAction;
   const { resetOptionsId } = optionPropertiesActions;
+
+  // Function which does async thunk request depending on location
 
   const asyncUpdateProducts = (payload) => {
     if (location.pathname === "/create") {
@@ -46,6 +50,8 @@ function useUpdateDataBase() {
       });
     }
   };
+
+  // Function for block or deploy user
 
   const asyncUpdateUsers = (id, url) => {
     const formData = new FormData();

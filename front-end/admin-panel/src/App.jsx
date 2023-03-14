@@ -26,11 +26,15 @@ import AboutUser from "./pages/AboutUser";
 function App() {
   const { isAdmin, rememberMe } = useSelector((state) => state.authorization);
 
+  //cutsom hook for request
   useApi(asyncThunkToGetBrands(BRANDS_URL));
   useApi(asyncThunkToGetCountries(COUNTRIES_URL));
   useApi(asyncThunkToGetRams(RAMS_URL));
   useApi(asyncThunkToGetUsers());
 
+  //* logic for checking is it admin
+
+  //if admin not log in
   if (JSON.parse(localStorage.getItem("admin")) === null) {
     if (isAdmin === null) {
       return (
@@ -49,6 +53,7 @@ function App() {
       );
     }
     if (isAdmin === true) {
+      // if admin choose remember me checkbox in auth component
       if (rememberMe === false) {
         sessionStorage.setItem("admin", true);
         notificationAfterLoginIn();
@@ -76,8 +81,8 @@ function App() {
                 <Route path="/delete" element={<DeleteProduct />} />
                 <Route path="/options" element={<Options />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/more/user" element={<AboutUser />} />
-                <Route path="/more/product" element={<AboutProduct />} />
+                <Route path="/about/user" element={<AboutUser />} />
+                <Route path="/about/product" element={<AboutProduct />} />
               </Routes>
             </div>
             <Footer />
